@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AndroidProject</string>
+    <string name="statistics">STATISTICS</string>
+    <string name="priceStatStr">Price: $1700 - $2000</string>
+    <string name="currencyStatStr">Currency: CAN</string>
+    <string name="distanceStatStr">Distance: 200km - 300km</string>
+    <string name="weatherStatStr">Weather: Sunny</string>
+    <string name="nextButtonStr">NEXT</string>
 </resources>
