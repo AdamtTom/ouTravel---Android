@@ -6,12 +6,12 @@
         android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/statistics"
+        android:id="@+id/page6_statistics"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="90dp"
         android:paddingTop="90dp"
-        android:text="@string/statistics"
+        android:text="@string/page6_statistics"
         android:textColor="@color/black"
         android:textSize="40sp"
         tools:ignore="RtlSymmetry" />
@@ -29,44 +29,44 @@
         android:paddingTop="20dp">
 
         <TextView
-            android:id="@+id/priceStat"
+            android:id="@+id/page6_priceStat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="10"
-            android:text="@string/priceStatStr"
+            android:text="@string/page6_priceStatStr"
             android:textColor="@color/black"
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/currencyStat"
+            android:id="@+id/page6_currencyStat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="10"
-            android:text="@string/currencyStatStr"
+            android:text="@string/page6_currencyStatStr"
             android:textColor="@color/black"
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/distanceStat"
+            android:id="@+id/page6_distanceStat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="10"
-            android:text="@string/distanceStatStr"
+            android:text="@string/page6_distanceStatStr"
             android:textColor="@color/black"
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/weatherStat"
+            android:id="@+id/page6_weatherStat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="10"
-            android:text="@string/weatherStatStr"
+            android:text="@string/page6_weatherStatStr"
             android:textColor="@color/black"
             android:textSize="25sp" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/page6_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="250dp"
