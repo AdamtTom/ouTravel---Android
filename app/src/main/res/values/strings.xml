@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">AndroidProject</string>
+    <string name="page2_header1">To begin, please choose the dates you’d like to travel:</string>
+    <string name="page2_helper1">From:</string>
+    <string name="page2_helper2">To:</string>
+    <string name="page2_btn1">Choose Date</string>
+    <string name="page2_header2">Please enter your address:</string>
+    <string name="page2_hint">Address</string>
+    <string name="next">Next</string>
 </resources>
