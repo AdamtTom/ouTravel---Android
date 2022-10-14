@@ -30,4 +30,6 @@
     <string name="page4_city">City:  Vancouver </string>
     <string name="page4_date">Date: 13/10/2022</string>
     <string name="page4_price">Price:  $2000</string>
+    <string name="page4_select">Select</string>
+
 </resources>
