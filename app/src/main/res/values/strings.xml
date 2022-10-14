@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">AndroidProject</string>
     <string name="page6_statistics">STATISTICS</string>
-    <string name="page6_priceStatStr">Price: $1700 - $2000</string>
-    <string name="page6_currencyStatStr">Currency: CAN</string>
-    <string name="page6_distanceStatStr">Distance: 200km - 300km</string>
-    <string name="page6_weatherStatStr">Weather: Sunny</string>
+    <string-array name="page6_fragmentList">
+        <item>Price: $1700 - $2000</item>
+        <item>Currency: CAN</item>
+        <item>Distance: 200km - 300km</item>
+        <item>Weather: Sunny</item>
+    </string-array>
     <string name="nextButtonStr">NEXT</string>
     <string name="Page3_chooseInterest">Choose among the following interests for your trip</string>
     <string name="Page3_nature">Nature</string>

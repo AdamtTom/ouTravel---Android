@@ -1,78 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/page6_statistics"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="90dp"
-        android:paddingTop="90dp"
-        android:text="@string/page6_statistics"
-        android:textColor="@color/black"
-        android:textSize="40sp"
-        tools:ignore="RtlSymmetry" />
-
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Page6">
 
     <LinearLayout
+        android:id="@+id/linear_layout"
         android:layout_width="match_parent"
-        android:layout_height="455dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:gravity="center"
-        android:minHeight="300dp"
-        android:orientation="vertical"
-        android:paddingTop="20dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/page6_priceStat"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:text="@string/page6_priceStatStr"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/page6_currencyStat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:text="@string/page6_currencyStatStr"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/page6_distanceStat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:text="@string/page6_distanceStatStr"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/page6_weatherStat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="10"
-            android:text="@string/page6_weatherStatStr"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:layout_marginTop="600dp"
+            android:layout_marginStart="250dp"
+            android:text="@string/nextButtonStr"
+            android:textSize="20sp"/>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/page6_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="250dp"
-        android:backgroundTint="@color/green"
-        android:textSize="25sp"
-        android:text="@string/nextButtonStr" />
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
