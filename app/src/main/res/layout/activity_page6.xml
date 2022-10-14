@@ -12,13 +12,13 @@
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/page6_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="600dp"
-            android:layout_marginStart="250dp"
             android:text="@string/nextButtonStr"
-            android:textSize="20sp"/>
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="50dp"
+            android:textSize="20sp" />
     </LinearLayout>
 
 
