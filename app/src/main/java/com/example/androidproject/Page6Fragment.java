@@ -25,5 +25,4 @@ public class Page6Fragment extends ListFragment {
         setListAdapter(adapter);
         return view;
     }
-
 }
