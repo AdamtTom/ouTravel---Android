@@ -2,6 +2,7 @@ package com.example.androidproject;
 
 import android.app.DatePickerDialog;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -52,5 +53,7 @@ public class Page2 extends AppCompatActivity implements DatePickerDialog.OnDateS
     }
 
     public void next(){
+        Intent intent = new Intent(this, Page3.class);
+        startActivity(intent);
     }
 }

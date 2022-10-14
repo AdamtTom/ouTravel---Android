@@ -11,10 +11,10 @@ public class Page3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page3);
-//        Button button = findViewById(R.id.Page3_button1);
-//        button.setOnClickListener(view -> {
-//            Intent intent = new Intent(this, Page4.class);
-//            startActivity(intent);
-//        });
+        Button button = findViewById(R.id.Page3_button1);
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(this, Page6.class);
+            startActivity(intent);
+        });
     }
 }
