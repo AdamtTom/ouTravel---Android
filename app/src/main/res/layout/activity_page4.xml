@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:text="@string/page4_country"
         android:textSize="25sp"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
         android:layout_below="@id/Page4_imageView"/>
     <TextView
@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/page4_date"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="40dp"
         android:textSize="25sp"
         android:layout_below="@id/Page4_textView3"/>
     <TextView
@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/page4_price"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="40dp"
         android:textSize="25sp"
         android:layout_below="@id/Page4_textView4"/>
 
