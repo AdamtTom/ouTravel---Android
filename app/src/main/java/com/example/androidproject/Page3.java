@@ -12,9 +12,11 @@ public class Page3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page3);
         Button button = findViewById(R.id.Page3_button1);
-        button.setOnClickListener(view -> {
-            Intent intent = new Intent(this, Page6.class);
-            startActivity(intent);
-        });
+        button.setOnClickListener(view -> next());
+    }
+
+    public void next(){
+        Intent intent = new Intent(this, Page4.class);
+        startActivity(intent);
     }
 }

@@ -22,6 +22,7 @@
         tools:ignore="ContentDescription"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@id/Page4_textView1"
         app:srcCompat="@drawable/country" />
     <TextView
@@ -60,22 +61,22 @@
 
     <ImageButton
         android:id="@+id/Page4_imageButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_below="@id/Page4_textView5"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="82dp"
+        android:layout_marginTop="30dp"
         app:srcCompat="@drawable/approved"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_below="@id/Page4_textView5"
         android:layout_alignStart="@id/Page4_imageButton"
         android:layout_marginStart="200dp"
-        android:layout_marginTop="82dp"
+        android:layout_marginTop="30dp"
         app:srcCompat="@drawable/reject"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
