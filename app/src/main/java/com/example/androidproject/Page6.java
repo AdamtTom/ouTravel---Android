@@ -1,6 +1,8 @@
 package com.example.androidproject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -32,10 +34,10 @@ public class Page6 extends AppCompatActivity {
 //        fragmentTransaction.replace(R.id.linear_layout, fragment1).commit();
 //
 //
-//        Button button = findViewById(R.id.page6_button);
-//        Button.setOnClickListener(view -> {
-//            Intent intent = new Intent(this, Page7.class);
-//            startActivity(intent);
-//        });
+        Button button = findViewById(R.id.page6_button);
+        button.setOnClickListener(view -> {
+            Intent intent = new Intent(this, Page7.class);
+            startActivity(intent);
+        });
     }
 }

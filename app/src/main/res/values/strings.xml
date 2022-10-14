@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">AndroidProject</string>
+    <string name="main_page_welcome">Welcome to YouTravel!</string>
+    <string name="main_page_content">Want to travel, but don\'t know where to go?<br/>
+        Let us help you make that decision!</string>
     <string name="page6_statistics">STATISTICS</string>
     <string-array name="page6_fragmentList">
         <item>Price: $1700 - $2000</item>
@@ -30,4 +33,6 @@
     <string name="page4_city">City:  Vancouver </string>
     <string name="page4_date">Date: 13/10/2022</string>
     <string name="page4_price">Price:  $2000</string>
+    <string name="page7_thankYou">Thank you for using YouTravel!</string>
+    <string name="page7_byeMessage">We wish you a great trip!</string>
 </resources>
