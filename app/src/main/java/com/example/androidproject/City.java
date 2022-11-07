@@ -12,6 +12,7 @@ public class City {
 
     private String name;
     // [nature, partying, culture, relaxation]
+    private String counrty;
     private ArrayList<String> tags;
     private String description;
     // [cloudy, rainy, sunny, snowy]
@@ -23,6 +24,7 @@ public class City {
     public void setName(String name){
         this.name = name;
     }
+    public void setCounrty(String counrty){this.counrty = counrty;}
     public void setTags(ArrayList<String> tags){
         this.tags = tags;
     }
@@ -38,6 +40,7 @@ public class City {
 
 
     public String  getName(){return this.name;}
+    public String getCounrty(){return this.counrty;}
     public ArrayList<String> getTags(){
         return this.tags;
     }

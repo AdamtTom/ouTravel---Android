@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
 
-        // addData();
+         addData();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
         String cityName = "Toronto";
         String tempUrl = url + "?q=" + cityName + "&appid=" + appid;
 
-        AsyncTaskRunner runner = new AsyncTaskRunner();
-        runner.execute(tempUrl);
+//        AsyncTaskRunner runner = new AsyncTaskRunner();
+//        runner.execute(tempUrl);
 
     }
 
@@ -114,18 +114,57 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addData(){
-        City vancouver = new City();
-        vancouver.setName("Vancouver");
-        ArrayList<String> tags = new ArrayList<String>();
-        tags.add("nature");
-        tags.add("partying");
-        vancouver.setTags(tags);
-        vancouver.setWeather("rainy");
-        vancouver.setDescription("A place where a rainy day is just a day.");
-        vancouver.setImage(R.drawable.vancouver);
-
+        City bali = new City();
+        bali.setName("Bali");
+        bali.setCounrty("Indonesia");
+        ArrayList<String> balitags = new ArrayList<String>();
+        balitags.add("nature");
+        balitags.add("relaxation");
+        bali.setTags(balitags);
+        bali.setWeather("hot");
+        bali.setDescription("A place where you can relax you can find beaches, volcanoes, and jungles. \n");
+        bali.setImage(R.drawable.bali);
         String id = databaseReference.push().getKey();
-        databaseReference.child("City").child(id).setValue(vancouver);
+        databaseReference.child("City").child(id).setValue(bali);
+
+        City newOrleans = new City();
+        newOrleans.setName("New Orleans");
+        newOrleans.setCounrty("United States");
+        ArrayList<String> newOrleanstags = new ArrayList<String>();
+        newOrleanstags.add("partying");
+        newOrleanstags.add("culture");
+        newOrleans.setTags(newOrleanstags);
+        newOrleans.setWeather("hot");
+        newOrleans.setDescription("The lively city known for street music, festive vibes and a melting pot");
+        newOrleans.setImage(R.drawable.neworleans);
+        String id1 = databaseReference.push().getKey();
+        databaseReference.child("City").child(id1).setValue(newOrleans);
+
+
+        City kerry = new City();
+        kerry.setName("Kerry");
+        kerry.setCounrty("Ireland");
+        ArrayList<String> kerrytags = new ArrayList<String>();
+        kerrytags.add("nature");
+        kerrytags.add("relaxation");
+        kerry.setTags(kerrytags);
+        kerry.setWeather("average");
+        kerry.setDescription("The city is famous for having unique small towns such as dingle and Killarney National Park, mountains, lakes and coasts.");
+        kerry.setImage(R.drawable.kerry);
+        String id2 = databaseReference.push().getKey();
+        databaseReference.child("City").child(id2).setValue(kerry);
+
+        City marrakesh = new City();
+        marrakesh.setName("Marrakesh");
+        marrakesh.setCounrty("Morocco");
+        ArrayList<String> marrakeshtags = new ArrayList<String>();
+        marrakeshtags.add("culture");
+        marrakesh.setTags(marrakeshtags);
+        marrakesh.setWeather("hot");
+        marrakesh.setDescription("This ancient walled city is home to mosques, places and lush gardens. It is known as red city");
+        marrakesh.setImage(R.drawable.marrakech);
+        String id3 = databaseReference.push().getKey();
+        databaseReference.child("City").child(id3).setValue(marrakesh);
     }
 
 
