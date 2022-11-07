@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         City matterhorn = new City();
         matterhorn.setName("Matterhorn");
         matterhorn.setCountry("Switzerland");
+        matterhorn.setIataCode("ZRH");
         ArrayList<String> matterhorntags = new ArrayList<String>();
         matterhorntags.add("nature");
         matterhorn.setTags(matterhorntags);
@@ -131,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
         City lasVegas = new City();
         lasVegas.setName("Las Vegas");
         lasVegas.setCountry("United States");
+        lasVegas.setIataCode("LAS");
         ArrayList<String> lasVegastags = new ArrayList<String>();
         lasVegastags.add("partying");
         lasVegas.setTags(lasVegastags);
@@ -144,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         City buenos = new City();
         buenos.setName("Buenos Aires");
         buenos.setCountry("Argentina");
+        buenos.setIataCode("EZE");
         ArrayList<String> buenostags = new ArrayList<String>();
         buenostags.add("partying");
         buenos.setTags(buenostags);
@@ -156,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
         City cinque = new City();
         cinque.setName("Cinque Terre");
         cinque.setCountry("Italy");
+        cinque.setIataCode("PSA");
         ArrayList<String> cinquetags = new ArrayList<String>();
         cinquetags.add("culture");
         cinquetags.add("nature");
@@ -169,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
         City budapest = new City();
         budapest.setName("Budapest");
         budapest.setCountry("Hungary");
+        budapest.setIataCode("BUD");
         ArrayList<String> budapesttags = new ArrayList<String>();
         budapesttags.add("culture");
         budapesttags.add("relaxation");
@@ -182,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
         City beijing = new City();
         beijing.setName("Beijing");
         beijing.setCountry("China");
+        beijing.setIataCode("PEK");
         ArrayList<String> beijingtags = new ArrayList<String>();
         beijingtags.add("culture");
         beijingtags.add("partying");
@@ -196,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
         City ibiza = new City();
         ibiza.setName("Ibiza");
         ibiza.setCountry("Spain");
+        ibiza.setIataCode("IBZ");
         ArrayList<String> ibizatags = new ArrayList<String>();
         ibizatags.add("culture");
         ibizatags.add("nature");
@@ -211,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
         City hawaii = new City();
         hawaii.setName("Hawaii");
         hawaii.setCountry("United States");
+        hawaii.setIataCode("HNL");
         ArrayList<String> hawaiitags = new ArrayList<String>();
         hawaiitags.add("nature");
         hawaiitags.add("relaxation");
@@ -225,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
         City hanoi = new City();
         hanoi.setName("Hanoi");
         hanoi.setCountry("Vietnam");
+        hanoi.setIataCode("HAN");
         ArrayList<String> hanoitags = new ArrayList<String>();
         hanoitags.add("culture");
         hanoitags.add("partying");
@@ -239,6 +248,7 @@ public class MainActivity extends AppCompatActivity {
         City lisbon = new City();
         lisbon.setName("Lisbon");
         lisbon.setCountry("Portugal");
+        lisbon.setIataCode("LIS");
         ArrayList<String> lisbontags = new ArrayList<String>();
         lisbontags.add("culture");
         lisbontags.add("relaxation");
@@ -252,6 +262,7 @@ public class MainActivity extends AppCompatActivity {
         City virunga = new City();
         virunga.setName("Virunga National Park");
         virunga.setCountry("Democratic Republic of Congo");
+        virunga.setIataCode("FIH");
         ArrayList<String> virungatags = new ArrayList<String>();
         virungatags.add("nature");
         virunga.setTags(virungatags);
@@ -264,6 +275,7 @@ public class MainActivity extends AppCompatActivity {
         City machuPicchu = new City();
         machuPicchu.setName("Machu Picchu");
         machuPicchu.setCountry("Peru");
+        machuPicchu.setIataCode("MFT");
         ArrayList<String> machuPicchutags = new ArrayList<String>();
         machuPicchutags.add("culture");
         machuPicchutags.add("nature");
@@ -277,6 +289,7 @@ public class MainActivity extends AppCompatActivity {
         City providencia = new City();
         providencia.setName("Providencia");
         providencia.setCountry("Colombia");
+        providencia.setIataCode("PVA");
         ArrayList<String> providenciatags = new ArrayList<String>();
         providenciatags.add("culture");
         providenciatags.add("culture");
@@ -290,6 +303,7 @@ public class MainActivity extends AppCompatActivity {
         City laucala = new City();
         laucala.setName("Laucala Island Resort");
         laucala.setCountry("Fiji");
+        laucala.setIataCode("NAN");
         ArrayList<String> laucalatags = new ArrayList<String>();
         laucalatags.add("nature");
         laucalatags.add("relaxation");
@@ -303,6 +317,7 @@ public class MainActivity extends AppCompatActivity {
         City seoul = new City();
         seoul.setName("Seoul");
         seoul.setCountry("Korea");
+        seoul.setIataCode("ICN");
         ArrayList<String> seoultags = new ArrayList<String>();
         seoultags.add("partying");
         seoul.setTags(seoultags);
@@ -316,6 +331,7 @@ public class MainActivity extends AppCompatActivity {
         City copenhagen = new City();
         copenhagen.setName("Copenhagen");
         copenhagen.setCountry("Denmark");
+        copenhagen.setIataCode("CPH");
         ArrayList<String> copenhagentags = new ArrayList<String>();
         copenhagentags.add("culture");
         copenhagentags.add("partying");
@@ -330,6 +346,7 @@ public class MainActivity extends AppCompatActivity {
         City cairo = new City();
         cairo.setName("Cairo");
         cairo.setCountry("Egypt");
+        cairo.setIataCode("CAI");
         ArrayList<String> cairotags = new ArrayList<String>();
         cairotags.add("culture");
         cairotags.add("nature");
@@ -344,6 +361,7 @@ public class MainActivity extends AppCompatActivity {
         City santiago = new City();
         santiago.setName("Santiago");
         santiago.setCountry("Chile");
+        santiago.setIataCode("SCL");
         ArrayList<String> santiagotags = new ArrayList<String>();
         santiagotags.add("partying");
         santiagotags.add("culture");
@@ -358,6 +376,7 @@ public class MainActivity extends AppCompatActivity {
         City amsterdam = new City();
         amsterdam.setName("Amsterdam");
         amsterdam.setCountry("the Kingdom of the Netherlands");
+        amsterdam.setIataCode("AMS");
         ArrayList<String> amsterdamtags = new ArrayList<String>();
         amsterdamtags.add("partying");
         amsterdamtags.add("culture");
@@ -371,6 +390,7 @@ public class MainActivity extends AppCompatActivity {
         City barbados = new City();
         barbados.setName("Barbabos");
         barbados.setCountry("Caribbean island");
+        barbados.setIataCode("BGI");
         ArrayList<String> barbadostags = new ArrayList<String>();
         barbadostags.add("culture");
         barbadostags.add("relaxation");
@@ -384,6 +404,7 @@ public class MainActivity extends AppCompatActivity {
         City hongkong = new City();
         hongkong.setName("Hong Kong");
         hongkong.setCountry("China");
+        hongkong.setIataCode("HKG");
         ArrayList<String> hongkongtags = new ArrayList<String>();
         hongkongtags.add("partying");
         hongkongtags.add("culture");
@@ -397,6 +418,7 @@ public class MainActivity extends AppCompatActivity {
         City petra = new City();
         petra.setName("Petra");
         petra.setCountry("Jordan");
+        petra.setIataCode("KBR");
         ArrayList<String> petratags = new ArrayList<String>();
         petratags.add("nature");
         petratags.add("culture");
@@ -410,6 +432,7 @@ public class MainActivity extends AppCompatActivity {
         City riodeJaneiro = new City();
         riodeJaneiro.setName("Rio de Janeiro");
         riodeJaneiro.setCountry("Brazil");
+        riodeJaneiro.setIataCode("GIG");
         ArrayList<String> riodeJaneirotags = new ArrayList<String>();
         riodeJaneirotags.add("nature");
         riodeJaneirotags.add("culture");
@@ -423,6 +446,7 @@ public class MainActivity extends AppCompatActivity {
         City london = new City();
         london.setName("London");
         london.setCountry("England");
+        london.setIataCode("YXU");
         ArrayList<String> londontags = new ArrayList<String>();
         londontags.add("culture");
         london.setTags(londontags);
@@ -435,6 +459,7 @@ public class MainActivity extends AppCompatActivity {
         City singapore = new City();
         singapore.setName("Singapore");
         singapore.setCountry("Singapore");
+        singapore.setIataCode("SIN");
         ArrayList<String> singaporetags = new ArrayList<String>();
         singaporetags.add("partying");
         singaporetags.add("culture");

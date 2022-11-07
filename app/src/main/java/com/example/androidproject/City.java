@@ -10,6 +10,7 @@ import java.util.ArrayList;
  */
 public class City {
 
+    private String iataCode;
     private String name;
     // [nature, partying, culture, relaxation]
     private String country;
@@ -21,10 +22,11 @@ public class City {
     // images of the same city
     private int image;
 
+    public void setIataCode(String iataCode) {this.iataCode = iataCode;}
     public void setName(String name){
         this.name = name;
     }
-    public void setCountry(String counrty){this.country = counrty;}
+    public void setCountry(String country){this.country = country;}
     public void setTags(ArrayList<String> tags){
         this.tags = tags;
     }
@@ -38,7 +40,7 @@ public class City {
         this.image = image;
     }
 
-
+    public String getIataCode(){return this.iataCode;}
     public String  getName(){return this.name;}
     public String getCountry(){return this.country;}
     public ArrayList<String> getTags(){
