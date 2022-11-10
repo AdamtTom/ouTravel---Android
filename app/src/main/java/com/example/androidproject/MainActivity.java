@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import com.android.volley.AuthFailureError;
@@ -53,9 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
         tvResult = findViewById(R.id.textView2);
         String cityName = "Toronto";
-        String tempUrl = url + "?q=" + cityName + "&appid=" + appid;
-
-//        AsyncTaskRunner runner = new AsyncTaskRunner();
+//        String tempUrl = url + "?q=" + cityName + "&appid=" + appid;
+        String tempUrl = "https://skyscanner50.p.rapidapi.com/api/v1/searchFlights?origin=LOND&destination=YVR&date=2022-11-16&returnDate=2022-11-22&adults=1&currency=CAD";
+//        AsyncTaskRunner2 runner = new AsyncTaskRunner2();
 //        runner.execute(tempUrl);
 
     }
@@ -109,6 +110,47 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
                 }
             });
+
+            queue.add(request);
+            return null;
+        }
+    }
+
+
+    private class AsyncTaskRunner2 extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, strings[0], null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        JSONArray data = response.getJSONArray("data");
+                        JSONObject priceObj = data.getJSONObject(0).getJSONObject("price");
+                        double price = priceObj.getDouble("amount");
+
+                        tvResult.setText("Trip Price (YVR-GIG): " + price);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Log.i("tag", "big error Lol" + e);
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    //headers.put("Content-Type", "application/json");
+                    headers.put("X-RapidAPI-Key", "2997260c62mshe6779e627ae5e7fp1ced22jsnf8590df105f3");
+                    headers.put("X-RapidAPI-Host", "skyscanner50.p.rapidapi.com");
+                    return headers;
+                }
+            };
 
             queue.add(request);
             return null;
@@ -472,7 +514,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void start(){
-        Intent intent = new Intent(this, Page2.class);
+        Intent intent = new Intent(this, ResultsPage.class);
         startActivity(intent);
     }
 }
