@@ -1,5 +1,8 @@
 package com.example.androidproject;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 /**
@@ -8,7 +11,7 @@ import java.util.ArrayList;
  * adding data (user input), but in this case we'll just use it to populate the database.
  * i.e. No user will add a city to the db.
  */
-public class City {
+public class City implements Parcelable {
 
     private String iataCode;
     private String name;
@@ -21,6 +24,48 @@ public class City {
     // We might want to make this an int array later, to be able to display multiple
     // images of the same city
     private int image;
+
+    public City() {
+
+    }
+
+    protected City(Parcel in) {
+        iataCode = in.readString();
+        name = in.readString();
+        country = in.readString();
+        tags = in.createStringArrayList();
+        description = in.readString();
+        weather = in.readString();
+        image = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(iataCode);
+        dest.writeString(name);
+        dest.writeString(country);
+        dest.writeStringList(tags);
+        dest.writeString(description);
+        dest.writeString(weather);
+        dest.writeInt(image);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<City> CREATOR = new Creator<City>() {
+        @Override
+        public City createFromParcel(Parcel in) {
+            return new City(in);
+        }
+
+        @Override
+        public City[] newArray(int size) {
+            return new City[size];
+        }
+    };
 
     public void setIataCode(String iataCode) {this.iataCode = iataCode;}
     public void setName(String name){
