@@ -157,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void addData(){
+//    private void addData(){
 //        City matterhorn = new City();
 //        matterhorn.setName("Matterhorn");
 //        matterhorn.setCountry("Switzerland");
@@ -511,10 +511,11 @@ public class MainActivity extends AppCompatActivity {
 //        singapore.setImage(R.drawable.singapore);
 //        String id24 = databaseReference.push().getKey();
 //        databaseReference.child("City").child(id24).setValue(singapore);
-    }
+//    }
 
     public void start(){
-        Intent intent = new Intent(this, ResultsPage.class);
+//        Intent intent = new Intent(this, ResultsPage.class);
+        Intent intent = new Intent(this, Page2.class);
         startActivity(intent);
     }
 }

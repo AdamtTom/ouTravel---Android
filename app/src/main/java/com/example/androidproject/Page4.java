@@ -42,22 +42,22 @@ public class Page4 extends AppCompatActivity {
         }
         viewPagerItems = new ArrayList<>();
 
-        for (int j = 0; j < cities.size(); j++) {
-            ViewPagerItem viewPagerItem = new ViewPagerItem(images.get(j), cityNames.get(j),
-                                                        countryNames.get(j), descriptions.get(j));
-            viewPagerItems.add(viewPagerItem);
-        }
-
-        MyPagerAdapter myPagerAdapter = new MyPagerAdapter(viewPagerItems);
-        viewPager2.setAdapter(myPagerAdapter);
-
-
-//        ViewPagerItem viewPagerItem = new ViewPagerItem(images.get(0), cityNames.get(0),
-//                                                        countryNames.get(0), descriptions.get(0));
-//        viewPagerItems.add(viewPagerItem);
+//        for (int j = 0; j < cities.size(); j++) {
+//            ViewPagerItem viewPagerItem = new ViewPagerItem(images.get(j), cityNames.get(j),
+//                                                        countryNames.get(j), descriptions.get(j));
+//            viewPagerItems.add(viewPagerItem);
+//        }
+//
 //        MyPagerAdapter myPagerAdapter = new MyPagerAdapter(viewPagerItems);
 //        viewPager2.setAdapter(myPagerAdapter);
-//        Toast.makeText(this, " " + R.drawable.matterhorn, Toast.LENGTH_LONG).show();
+
+
+        ViewPagerItem viewPagerItem = new ViewPagerItem(images.get(0), cityNames.get(0),
+                                                        countryNames.get(0), descriptions.get(0));
+        viewPagerItems.add(viewPagerItem);
+        MyPagerAdapter myPagerAdapter = new MyPagerAdapter(viewPagerItems);
+        viewPager2.setAdapter(myPagerAdapter);
+        Toast.makeText(this, " " + R.drawable.matterhorn, Toast.LENGTH_LONG).show();
 
 //        Toast.makeText(this, " " + viewPagerItems.get(0).getImage(), Toast.LENGTH_LONG).show();
 //        Toast.makeText(this, " " + viewPagerItems.get(0).getCity(), Toast.LENGTH_LONG).show();
