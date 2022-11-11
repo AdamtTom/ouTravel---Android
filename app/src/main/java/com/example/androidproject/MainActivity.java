@@ -3,7 +3,9 @@ package com.example.androidproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import com.android.volley.AuthFailureError;
@@ -11,9 +13,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.AsyncTask;
@@ -54,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
 
         tvResult = findViewById(R.id.textView2);
         String cityName = "Toronto";
-        String tempUrl = url + "?q=" + cityName + "&appid=" + appid;
-
-//        AsyncTaskRunner runner = new AsyncTaskRunner();
+//        String tempUrl = url + "?q=" + cityName + "&appid=" + appid;
+        String tempUrl = "https://skyscanner50.p.rapidapi.com/api/v1/searchFlights?origin=LOND&destination=YVR&date=2022-11-16&returnDate=2022-11-22&adults=1&currency=CAD";
+//        AsyncTaskRunner2 runner = new AsyncTaskRunner2();
 //        runner.execute(tempUrl);
 
     }
@@ -116,74 +118,121 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    private void addData(){
-//        City matterhorn = new City();
-//        matterhorn.setName("Matterhorn");
-//        matterhorn.setCountry("Switzerland");
-//        matterhorn.setIataCode("ZRH");
-//        ArrayList<String> matterhorntags = new ArrayList<String>();
-//        matterhorntags.add("nature");
-//        matterhorn.setTags(matterhorntags);
-//        matterhorn.setWeather("cold");
-//        matterhorn.setDescription("The Matterhorn is one of the world’s most iconic peaks—the pyramid-shaped mountain, which is very difficult to climb, is said to be the most-photographed mountain in the world\n");
-//        matterhorn.setImage(R.drawable.matterhorn);
-//        String id = databaseReference.push().getKey();
-//        databaseReference.child("City").child(id).setValue(matterhorn);
-//
-//        City lasVegas = new City();
-//        lasVegas.setName("Las Vegas");
-//        lasVegas.setCountry("United States");
-//        lasVegas.setIataCode("LAS");
-//        ArrayList<String> lasVegastags = new ArrayList<String>();
-//        lasVegastags.add("partying");
-//        lasVegas.setTags(lasVegastags);
-//        lasVegas.setWeather("average");
-//        lasVegas.setDescription("The lively city known for street music, festive vibes and a melting pot");
-//        lasVegas.setImage(R.drawable.lasvegas);
-//        String id1 = databaseReference.push().getKey();
-//        databaseReference.child("City").child(id1).setValue(lasVegas);
-//
-//
-//        City buenos = new City();
-//        buenos.setName("Buenos Aires");
-//        buenos.setCountry("Argentina");
-//        buenos.setIataCode("EZE");
-//        ArrayList<String> buenostags = new ArrayList<String>();
-//        buenostags.add("partying");
-//        buenos.setTags(buenostags);
-//        buenos.setWeather("average");
-//        buenos.setDescription("Bookstores set in palatial theaters, tango dancing in the streets and brightly painted neighborhoods. These are just some of what makes Buenos Aires so beautiful");
-//        buenos.setImage(R.drawable.buenosaires);
-//        String id2 = databaseReference.push().getKey();
-//        databaseReference.child("City").child(id2).setValue(buenos);
-//
-//        City cinque = new City();
-//        cinque.setName("Cinque Terre");
-//        cinque.setCountry("Italy");
-//        cinque.setIataCode("PSA");
-//        ArrayList<String> cinquetags = new ArrayList<String>();
-//        cinquetags.add("culture");
-//        cinquetags.add("nature");
-//        cinque.setTags(cinquetags);
-//        cinque.setWeather("average");
-//        cinque.setDescription("Is there anything prettier than this area of centuries-old seaside villages on the rugged Italian Riviera coastline? The five towns (Manarola, Riomaggiore, Corniglia, Vernazza and Monterosso al Mare) are made for bucket lists.\n");
-//        cinque.setImage(R.drawable.cinque_terre);
-//        String id3 = databaseReference.push().getKey();
-//        databaseReference.child("City").child(id3).setValue(cinque);
-//
-//        City budapest = new City();
-//        budapest.setName("Budapest");
-//        budapest.setCountry("Hungary");
-//        budapest.setIataCode("BUD");
-//        ArrayList<String> budapesttags = new ArrayList<String>();
-//        budapesttags.add("culture");
-//        budapesttags.add("relaxation");
-//        budapest.setTags(budapesttags);
-//        budapest.setWeather("cold");
-//        budapest.setDescription("The capital city of Hungary, Budapest is a fairytale city in Eastern Europe.");
-//        budapest.setImage(R.drawable.budapest);
-//        String id4 = databaseReference.push().getKey();
-//        databaseReference.child("City").child(id4).setValue(budapest);
+
+    private class AsyncTaskRunner2 extends AsyncTask<String, Void, String> {
+
+        @Override
+        protected String doInBackground(String... strings) {
+            RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, strings[0], null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        JSONArray data = response.getJSONArray("data");
+                        JSONObject priceObj = data.getJSONObject(0).getJSONObject("price");
+                        double price = priceObj.getDouble("amount");
+
+                        tvResult.setText("Trip Price (YVR-GIG): " + price);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Log.i("tag", "big error Lol" + e);
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    //headers.put("Content-Type", "application/json");
+                    headers.put("X-RapidAPI-Key", "2997260c62mshe6779e627ae5e7fp1ced22jsnf8590df105f3");
+                    headers.put("X-RapidAPI-Host", "skyscanner50.p.rapidapi.com");
+                    return headers;
+                }
+            };
+
+            queue.add(request);
+            return null;
+        }
+    }
+
+    private void addData(){
+        Resources resource = getResources();
+        String name = resource.getResourceName(R.drawable.matterhorn);
+        City matterhorn = new City();
+        matterhorn.setName("Matterhorn");
+        matterhorn.setCountry("Switzerland");
+        matterhorn.setIataCode("ZRH");
+        ArrayList<String> matterhorntags = new ArrayList<String>();
+        matterhorntags.add("nature");
+        matterhorn.setTags(matterhorntags);
+        matterhorn.setWeather("cold");
+        matterhorn.setDescription("The Matterhorn is one of the world’s most iconic peaks—the pyramid-shaped mountain, which is very difficult to climb, is said to be the most-photographed mountain in the world\n");
+        matterhorn.setImage(name);
+        String id = databaseReference.push().getKey();
+        databaseReference.child("City").child(id).setValue(matterhorn);
+
+        City lasVegas = new City();
+        String name1 = resource.getResourceName(R.drawable.lasvegas);
+        lasVegas.setName("Las Vegas");
+        lasVegas.setCountry("United States");
+        lasVegas.setIataCode("LAS");
+        ArrayList<String> lasVegastags = new ArrayList<String>();
+        lasVegastags.add("partying");
+        lasVegas.setTags(lasVegastags);
+        lasVegas.setWeather("average");
+        lasVegas.setDescription("The lively city known for street music, festive vibes and a melting pot");
+        lasVegas.setImage(name1);
+        String id1 = databaseReference.push().getKey();
+        databaseReference.child("City").child(id1).setValue(lasVegas);
+
+
+        City buenos = new City();
+        String name3 = resource.getResourceName(R.drawable.buenosaires);
+        buenos.setName("Buenos Aires");
+        buenos.setCountry("Argentina");
+        buenos.setIataCode("EZE");
+        ArrayList<String> buenostags = new ArrayList<String>();
+        buenostags.add("partying");
+        buenos.setTags(buenostags);
+        buenos.setWeather("average");
+        buenos.setDescription("Bookstores set in palatial theaters, tango dancing in the streets and brightly painted neighborhoods. These are just some of what makes Buenos Aires so beautiful");
+        buenos.setImage(name3);
+        String id2 = databaseReference.push().getKey();
+        databaseReference.child("City").child(id2).setValue(buenos);
+
+        City cinque = new City();
+        String name4 = resource.getResourceName(R.drawable.cinque_terre);
+        cinque.setName("Cinque Terre");
+        cinque.setCountry("Italy");
+        cinque.setIataCode("PSA");
+        ArrayList<String> cinquetags = new ArrayList<String>();
+        cinquetags.add("culture");
+        cinquetags.add("nature");
+        cinque.setTags(cinquetags);
+        cinque.setWeather("average");
+        cinque.setDescription("Is there anything prettier than this area of centuries-old seaside villages on the rugged Italian Riviera coastline? The five towns (Manarola, Riomaggiore, Corniglia, Vernazza and Monterosso al Mare) are made for bucket lists.\n");
+        cinque.setImage(name4);
+        String id3 = databaseReference.push().getKey();
+        databaseReference.child("City").child(id3).setValue(cinque);
+
+        City budapest = new City();
+        String name5 = resource.getResourceName(R.drawable.budapest);
+        budapest.setName("Budapest");
+        budapest.setCountry("Hungary");
+        budapest.setIataCode("BUD");
+        ArrayList<String> budapesttags = new ArrayList<String>();
+        budapesttags.add("culture");
+        budapesttags.add("relaxation");
+        budapest.setTags(budapesttags);
+        budapest.setWeather("cold");
+        budapest.setDescription("The capital city of Hungary, Budapest is a fairytale city in Eastern Europe.");
+        budapest.setImage(name5);
+        String id4 = databaseReference.push().getKey();
+        databaseReference.child("City").child(id4).setValue(budapest);
 //
 //        City beijing = new City();
 //        beijing.setName("Beijing");
@@ -817,7 +866,8 @@ public class MainActivity extends AppCompatActivity {
 //        Moscow.setImage(R.drawable.moscow);
 //        String id49 = databaseReference.push().getKey();
 //        databaseReference.child("City").child(id49).setValue(Moscow);
-//    }
+         }
+
 
     public void start(){
         Intent intent = new Intent(this, Page2.class);
