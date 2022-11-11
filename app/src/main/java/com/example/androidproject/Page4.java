@@ -3,7 +3,10 @@ package com.example.androidproject;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 
@@ -54,6 +57,17 @@ public class Page4 extends AppCompatActivity {
 
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(viewPagerItems);
         viewPager2.setAdapter(myPagerAdapter);
+
+        ImageButton close = findViewById(R.id.imageCancel);
+        close.setOnClickListener(view->{
+            viewPager2.setCurrentItem(viewPager2.getCurrentItem()+1, true);
+        });
+
+
+        ImageButton check = findViewById(R.id.imageButtonCheck);
+        check.setOnClickListener(view->{
+            Toast.makeText(getApplicationContext(), "Current Page:" + viewPager2.getCurrentItem(), Toast.LENGTH_SHORT).show();
+        });
 
 
 //        ViewPagerItem viewPagerItem = new ViewPagerItem(images.get(0), cityNames.get(0),
