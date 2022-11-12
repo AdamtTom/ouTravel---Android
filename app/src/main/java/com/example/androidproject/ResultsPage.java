@@ -2,8 +2,10 @@ package com.example.androidproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +25,8 @@ import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ResultsPage extends AppCompatActivity {
 
@@ -62,10 +66,14 @@ public class ResultsPage extends AppCompatActivity {
         stops_leg2 = findViewById(R.id.stops_leg2);
         tripPrice = findViewById(R.id.TripPrice);
 
+        Bundle bundle = getIntent().getExtras();
+        City dest = bundle.getParcelable("destination");
+//        Toast.makeText(getApplicationContext(), "Iata: " + dest.getIataCode(), Toast.LENGTH_LONG).show();
+
         originIATA = "YVR";
-        destIATA = "LOND";
-        String departDate = "2022-11-16";
-        String returnDate = "2022-11-22";
+        destIATA = dest.getIataCode();
+        String departDate = "2022-11-26";
+        String returnDate = "2022-12-19";
         String adults = "1";
         String currency = "CAD";
         String children = "0";
@@ -75,6 +83,32 @@ public class ResultsPage extends AppCompatActivity {
         String tempUrl = "https://skyscanner50.p.rapidapi.com/api/v1/searchFlights?origin=" +
                 originIATA + "&destination=" + destIATA + "&date=" + departDate + "&returnDate=" +
                 returnDate + "&adults=" + adults + "&currency=" + currency;
+        Toast.makeText(getApplicationContext(), "URL: " + tempUrl, Toast.LENGTH_LONG).show();
+
+        String imgStr = dest.getImage();
+        int imgId = getResources().getIdentifier(imgStr, "drawable", getApplication().getPackageName());
+        CircleImageView img = findViewById(R.id.roundedCityImg);
+        img.setImageResource(imgId);
+
+        TextView cityNameTV = findViewById(R.id.roundedCityName);
+        cityNameTV.setText(dest.getName());
+
+        TextView countryNameTV = findViewById(R.id.countryNameResult);
+        String sourceString = "<b>Country:</b> " + dest.getCountry();
+        countryNameTV.setText(Html.fromHtml(sourceString, 0));
+
+        TextView departDateTV = findViewById(R.id.departDateResult);
+        sourceString = "<b>Departure Date:</b> ";// + departDate;
+        departDateTV.setText(Html.fromHtml(sourceString, 0));
+
+        TextView returnDateTV = findViewById(R.id.returnDateResult);
+        sourceString = "<b>Return Date:</b> ";// + returnDate;
+        returnDateTV.setText(Html.fromHtml(sourceString, 0));
+
+        TextView passengers = findViewById(R.id.passengerCountResult);
+        sourceString = "<b>Passengers:</b> 1";// + returnDate;
+        passengers.setText(Html.fromHtml(sourceString, 0));
+
 //        ResultsPage.AsyncTaskRunner runner = new ResultsPage.AsyncTaskRunner();
 //        runner.execute(tempUrl);
     }
@@ -87,6 +121,7 @@ public class ResultsPage extends AppCompatActivity {
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, strings[0], null, response -> {
                 try {
                     JSONArray data = response.getJSONArray("data");
+                    Toast.makeText(getApplicationContext(), "data: " + data.toString(5), Toast.LENGTH_LONG).show();
                     JSONObject option1 = data.getJSONObject(0);
                     JSONObject priceObj = option1.getJSONObject("price");
                     double price = priceObj.getDouble("amount");
@@ -97,18 +132,18 @@ public class ResultsPage extends AppCompatActivity {
                     int leg1duration = leg1.getInt("duration");
                     String leg1carrier = leg1.getJSONArray("carriers").getJSONObject(0).getString("name");
                     int leg1stops = leg1.getInt("stop_count");
-                    String leg1departTime = leg1.getString("departure").substring(11, 17);
-                    String leg1arrivalTime = leg1.getString("arrival").substring(11, 17);
+                    String leg1departTime = leg1.getString("departure").substring(11, 16);
+                    String leg1arrivalTime = leg1.getString("arrival").substring(11, 16);
 
                     //Leg2
-                    int leg2duration = leg1.getInt("duration");
-                    String leg2carrier = leg1.getJSONArray("carriers").getJSONObject(0).getString("name");
-                    int leg2stops = leg1.getInt("stop_count");
-                    String leg2departTime = leg1.getString("departure").substring(11, 17);
-                    String leg2arrivalTime = leg1.getString("arrival").substring(11, 17);
-                    Log.i("tag", "response:" + leg1carrier + leg2carrier + leg1departTime + leg1arrivalTime + leg2departTime + leg2arrivalTime);
-                    airline1.setText(leg1carrier);
-                    airline2.setText(leg2carrier);
+                    int leg2duration = leg2.getInt("duration");
+                    String leg2carrier = leg2.getJSONArray("carriers").getJSONObject(0).getString("name");
+                    int leg2stops = leg2.getInt("stop_count");
+                    String leg2departTime = leg2.getString("departure").substring(11, 16);
+                    String leg2arrivalTime = leg2.getString("arrival").substring(11, 16);
+//                    Log.i("tag", "response:" + leg1carrier + leg2carrier + leg1departTime + leg1arrivalTime + leg2departTime + leg2arrivalTime);
+                    airline1.setText(leg1carrier.replace(' ', '\n'));
+                    airline2.setText(leg2carrier.replace(' ', '\n'));
                     time1leg1.setText(leg1departTime);
                     time1leg2.setText(leg1arrivalTime);
                     time2leg1.setText(leg2departTime);
@@ -117,21 +152,18 @@ public class ResultsPage extends AppCompatActivity {
                     airport1leg2.setText(destIATA);
                     airport2leg1.setText(destIATA);
                     airport2leg2.setText(originIATA);
-                    if (leg1stops == 1)
-                        stops_leg1.setText(leg1stops + " stop");
-                    else
-                        stops_leg1.setText(leg1stops + " stops");
 
-                    if (leg2stops == 1)
-                        stops_leg2.setText(leg2stops + " stop");
-                    else
-                        stops_leg2.setText(leg2stops + " stops");
+                    stops_leg1.setText(leg1stops + " stop(s)");
+                    stops_leg2.setText(leg2stops + " stop(s)");
 
-                    tripPrice.setText("Trip Price (YVR-GIG): " + price);
+                    String sourceString = "<b>Trip Price ("+originIATA+"-"+destIATA+"):</b> " + price + " CAD";
+                    tripPrice.setText(Html.fromHtml(sourceString, 0));
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Log.i("tag", "big error Lol" + e);
+                    Log.i("tag", "JSON Error while handling request: " + e);
+                    tripPrice.setText("No flights were found. Try again Later.");
+                    tripPrice.setTextColor(Color.RED);
                 }
             }, error -> Toast.makeText(ResultsPage.this, error.toString(), Toast.LENGTH_SHORT).show()) {
                 @Override

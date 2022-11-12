@@ -10,13 +10,15 @@
         android:id="@+id/page6_button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="76dp"
         android:text="Next"
-        android:textSize="20sp"
         android:textAllCaps="false"
-        app:layout_constraintStart_toEndOf="@+id/TripPrice"
-        app:layout_constraintTop_toBottomOf="@+id/airport2leg2" />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.848"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.928" />
 
     <TextView
         android:id="@+id/time2leg2"
@@ -55,9 +57,9 @@
 
     <TextView
         android:id="@+id/stops_leg1"
-        android:layout_width="50dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="180dp"
+        android:layout_width="59dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="172dp"
         android:layout_marginTop="412dp"
         android:text="1 stop"
         android:textSize="15sp"
@@ -101,9 +103,9 @@
 
     <TextView
         android:id="@+id/airline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_width="65dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="392dp"
         android:text="Delta"
         android:textSize="15sp"
@@ -123,9 +125,9 @@
 
     <TextView
         android:id="@+id/stops_leg2"
-        android:layout_width="50dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="180dp"
+        android:layout_width="62dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="172dp"
         android:layout_marginTop="476dp"
         android:text="1 stop"
         android:textSize="15sp"
@@ -145,9 +147,9 @@
 
     <TextView
         android:id="@+id/airline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_width="64dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="456dp"
         android:text="Delta"
         android:textSize="15sp"
@@ -200,14 +202,16 @@
 
     <TextView
         android:id="@+id/TripPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="305dp"
+        android:layout_height="27dp"
         android:text="Trip Price: 867.89 CAD"
-        android:textSize="20sp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.226"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stops_leg2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.825" />
 
     <TextView
         android:id="@+id/tripPrice6"
@@ -219,86 +223,89 @@
         android:textColor="@color/teal_700"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripPrice5" />
+        app:layout_constraintTop_toBottomOf="@+id/passengerCountResult" />
 
     <TextView
-        android:id="@+id/tripPrice4"
+        android:id="@+id/countryNameResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="15dp"
-        android:text="Country: Canada"
+        android:text="Country: "
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/roundedCityName" />
 
     <TextView
-        android:id="@+id/tripPrice2"
+        android:id="@+id/departDateResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="4dp"
-        android:text="Departure Date: 2022/11/28"
+        android:text="Departure Date:"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripPrice4" />
+        app:layout_constraintTop_toBottomOf="@+id/countryNameResult" />
 
     <TextView
-        android:id="@+id/tripPrice3"
+        android:id="@+id/returnDateResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="4dp"
-        android:text="Return Date: 2022/12/19"
+        android:text="Return Date: "
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripPrice2" />
+        app:layout_constraintTop_toBottomOf="@+id/departDateResult" />
 
     <TextView
-        android:id="@+id/tripPrice5"
+        android:id="@+id/passengerCountResult"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="4dp"
-        android:text="Passengers: 1"
+        android:text="Passengers: "
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tripPrice3" />
+        app:layout_constraintTop_toBottomOf="@+id/returnDateResult" />
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView5"-->
+    <!--        android:layout_width="244dp"-->
+    <!--        android:layout_height="180dp"-->
+    <!--        android:layout_marginStart="80dp"-->
+    <!--        android:layout_marginTop="4dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.034"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:srcCompat="@drawable/vancouver1" />-->
 
     <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="192dp"
+        android:id="@+id/roundedCityName"
+        android:layout_width="228dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="184dp"
         android:gravity="center"
         android:text="Vancouver"
         android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView5"-->
-<!--        android:layout_width="244dp"-->
-<!--        android:layout_height="180dp"-->
-<!--        android:layout_marginStart="80dp"-->
-<!--        android:layout_marginTop="4dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.034"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:srcCompat="@drawable/vancouver1" />-->
-
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/roundedCityImg"
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:layout_centerInParent="true"
-        android:layout_marginStart="120dp"
         android:layout_marginTop="16dp"
         android:foregroundGravity="center_horizontal"
         android:src="@drawable/vancouver1"
         app:civ_border_color="@color/white"
         app:civ_border_width="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

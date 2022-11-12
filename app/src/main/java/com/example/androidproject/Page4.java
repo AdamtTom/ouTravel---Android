@@ -22,6 +22,7 @@ public class Page4 extends AppCompatActivity {
     ArrayList<String> cityNames = new ArrayList<>();
     ArrayList<String> countryNames = new ArrayList<>();
     ArrayList<String> descriptions = new ArrayList<>();
+    ArrayList<City> cities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,6 @@ public class Page4 extends AppCompatActivity {
         ///////////////////////////////////////////////////////////////////////
         viewPager2 = findViewById(R.id.page4ViewPager);
 
-        ArrayList<City> cities = new ArrayList<>();
         Bundle bundle = getIntent().getExtras();
         cities = bundle.getParcelableArrayList("cities");
 
@@ -65,9 +65,7 @@ public class Page4 extends AppCompatActivity {
 
 
         ImageButton check = findViewById(R.id.imageButtonCheck);
-        check.setOnClickListener(view->{
-            Toast.makeText(getApplicationContext(), "Current Page:" + viewPager2.getCurrentItem(), Toast.LENGTH_SHORT).show();
-        });
+        check.setOnClickListener(view -> next(viewPager2.getCurrentItem()));
 
 
 //        ViewPagerItem viewPagerItem = new ViewPagerItem(images.get(0), cityNames.get(0),
@@ -102,8 +100,12 @@ public class Page4 extends AppCompatActivity {
 //        button.setOnClickListener(view -> next());
     }
 
-    public void next(){
-        Intent intent = new Intent(this, Page6.class);
+    public void next(int cityIndex){
+//        Toast.makeText(getApplicationContext(), "Current Page:" + viewPager2.getCurrentItem(), Toast.LENGTH_SHORT).show();
+        Bundle b = new Bundle();
+        b.putParcelable("destination", cities.get(cityIndex));
+        Intent intent = new Intent(this, ResultsPage.class);
+        intent.putExtras(b);
         startActivity(intent);
     }
 }
