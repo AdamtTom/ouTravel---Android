@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,10 @@ public class ResultsPage extends AppCompatActivity {
     TextView stops_leg1;
     TextView stops_leg2;
     TextView tripPrice;
+    ImageView airplane1img;
+    ImageView airplane2img;
+    TextView dash1;
+    TextView dash2;
 
     String originIATA;
     String destIATA;
@@ -65,6 +70,10 @@ public class ResultsPage extends AppCompatActivity {
         stops_leg1 = findViewById(R.id.stops_leg1);
         stops_leg2 = findViewById(R.id.stops_leg2);
         tripPrice = findViewById(R.id.TripPrice);
+        airplane1img = findViewById(R.id.airplane1img);
+        airplane2img = findViewById(R.id.airplane2img);
+        dash1 = findViewById(R.id.dash1);
+        dash2 = findViewById(R.id.dash2);
 
         Bundle bundle = getIntent().getExtras();
         City dest = bundle.getParcelable("destination");
@@ -83,8 +92,9 @@ public class ResultsPage extends AppCompatActivity {
         String tempUrl = "https://skyscanner50.p.rapidapi.com/api/v1/searchFlights?origin=" +
                 originIATA + "&destination=" + destIATA + "&date=" + departDate + "&returnDate=" +
                 returnDate + "&adults=" + adults + "&currency=" + currency;
-        Toast.makeText(getApplicationContext(), "URL: " + tempUrl, Toast.LENGTH_LONG).show();
 
+        Toast.makeText(getApplicationContext(), "URL: " + tempUrl, Toast.LENGTH_LONG).show();
+        Log.i("request url: ", tempUrl);
         String imgStr = dest.getImage();
         int imgId = getResources().getIdentifier(imgStr, "drawable", getApplication().getPackageName());
         CircleImageView img = findViewById(R.id.roundedCityImg);
@@ -152,11 +162,13 @@ public class ResultsPage extends AppCompatActivity {
                     airport1leg2.setText(destIATA);
                     airport2leg1.setText(destIATA);
                     airport2leg2.setText(originIATA);
-
                     stops_leg1.setText(leg1stops + " stop(s)");
                     stops_leg2.setText(leg2stops + " stop(s)");
-
-                    String sourceString = "<b>Trip Price ("+originIATA+"-"+destIATA+"):</b> " + price + " CAD";
+                    airplane1img.setAlpha((float)1);
+                    airplane2img.setAlpha((float)1);
+                    dash1.setText("---------");
+                    dash2.setText("---------");
+                    String sourceString = "<b>Total Trip Price:</b> " + price + " CAD";
                     tripPrice.setText(Html.fromHtml(sourceString, 0));
 
                 } catch (JSONException e) {
