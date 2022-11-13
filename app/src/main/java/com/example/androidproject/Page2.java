@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import java.text.DateFormat;
@@ -51,6 +54,35 @@ public class Page2 extends AppCompatActivity implements DatePickerDialog.OnDateS
 
     public void next(){
         Intent intent = new Intent(this, Page3.class);
-        startActivity(intent);
+        Bundle bundle = new Bundle();
+        TextView departure = findViewById(R.id.emptyTextView1);
+        String departureDate = departure.getText().toString();
+        TextView Return = findViewById(R.id.emptyTextView2);
+        String returnDate = Return.getText().toString();
+        EditText passenger = findViewById(R.id.page2_textInput2);
+        String number = passenger.getText().toString();
+        EditText add = findViewById(R.id.page2_textInput);
+        String address = add.getText().toString();
+        if(departure.length() == 0 || departureDate.matches(" ")||departureDate.trim().matches("")){
+            Toast.makeText(getApplicationContext(),"Please select departure Date", Toast.LENGTH_LONG).show();
+        }
+        else if(Return.length() == 0 || returnDate.matches(" ")||returnDate.trim().matches("")){
+            Toast.makeText(getApplicationContext(),"Please select return Date", Toast.LENGTH_LONG).show();
+        }
+
+        else if(add.length() == 0 || address.matches(" ")||address.trim().matches("")){
+            Toast.makeText(getApplicationContext(),"Please enter valid address", Toast.LENGTH_LONG).show();
+        }
+        else if(passenger.length() == 0 || number.matches(" ")||number.trim().matches("") ){
+            Toast.makeText(getApplicationContext(),"Please enter valid number of passengers", Toast.LENGTH_LONG).show();
+        }
+        else {
+            bundle.putString("start", departureDate);
+            bundle.putString("end", returnDate);
+            bundle.putString("address", address);
+            bundle.putString("passengers", number);
+            intent.putExtra("bundle", bundle);
+            startActivity(intent);
+        }
     }
 }

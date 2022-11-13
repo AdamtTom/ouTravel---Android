@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="15dp">
+    android:layout_marginHorizontal="10dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -18,23 +18,23 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             app:cardCornerRadius="15dp"
             android:elevation="10dp">
 
             <RelativeLayout
                 android:id="@+id/cardBackground"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="465dp"
                 android:background="@drawable/vancouver">
 
                 <TextView
                     android:id="@+id/cityName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/page4_city"
-                    android:layout_marginTop="300dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginTop="315dp"
+                    android:text="@string/page4_city"
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:textStyle="bold" />
@@ -59,26 +59,6 @@
                     android:text="@string/page4_description"
                     android:textColor="@color/white" />
 
-
-                <Button
-                    android:id="@+id/Page4_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/description"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginStart="40dp"
-                    android:textSize="25sp"
-                    android:text="@string/page4_select" />
-
-                <Button
-                    android:id="@+id/Page4_button2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/description"
-                    android:layout_marginTop="30dp"
-                    android:textSize="25sp"
-                    android:layout_marginStart="200dp"
-                    android:text="@string/next" />
 
             </RelativeLayout>
 

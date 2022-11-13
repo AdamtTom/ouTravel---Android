@@ -3,6 +3,7 @@ package com.example.androidproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -158,6 +159,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addData(){
+        Resources resource = getResources();
+        String name = resource.getResourceName(R.drawable.matterhorn);
         City matterhorn = new City();
         matterhorn.setName("Matterhorn");
         matterhorn.setCountry("Switzerland");
@@ -167,11 +170,12 @@ public class MainActivity extends AppCompatActivity {
         matterhorn.setTags(matterhorntags);
         matterhorn.setWeather("cold");
         matterhorn.setDescription("The Matterhorn is one of the world’s most iconic peaks—the pyramid-shaped mountain, which is very difficult to climb, is said to be the most-photographed mountain in the world\n");
-        matterhorn.setImage(R.drawable.matterhorn);
+        matterhorn.setImage(name);
         String id = databaseReference.push().getKey();
         databaseReference.child("City").child(id).setValue(matterhorn);
 
         City lasVegas = new City();
+        String name1 = resource.getResourceName(R.drawable.lasvegas);
         lasVegas.setName("Las Vegas");
         lasVegas.setCountry("United States");
         lasVegas.setIataCode("LAS");
@@ -180,12 +184,13 @@ public class MainActivity extends AppCompatActivity {
         lasVegas.setTags(lasVegastags);
         lasVegas.setWeather("average");
         lasVegas.setDescription("The lively city known for street music, festive vibes and a melting pot");
-        lasVegas.setImage(R.drawable.lasvegas);
+        lasVegas.setImage(name1);
         String id1 = databaseReference.push().getKey();
         databaseReference.child("City").child(id1).setValue(lasVegas);
 
 
         City buenos = new City();
+        String name2 = resource.getResourceName(R.drawable.buenosaires);
         buenos.setName("Buenos Aires");
         buenos.setCountry("Argentina");
         buenos.setIataCode("EZE");
@@ -194,11 +199,12 @@ public class MainActivity extends AppCompatActivity {
         buenos.setTags(buenostags);
         buenos.setWeather("average");
         buenos.setDescription("Bookstores set in palatial theaters, tango dancing in the streets and brightly painted neighborhoods. These are just some of what makes Buenos Aires so beautiful");
-        buenos.setImage(R.drawable.buenosaires);
+        buenos.setImage(name2);
         String id2 = databaseReference.push().getKey();
         databaseReference.child("City").child(id2).setValue(buenos);
 
         City cinque = new City();
+        String name3 = resource.getResourceName(R.drawable.cinque_terre);
         cinque.setName("Cinque Terre");
         cinque.setCountry("Italy");
         cinque.setIataCode("PSA");
@@ -208,11 +214,12 @@ public class MainActivity extends AppCompatActivity {
         cinque.setTags(cinquetags);
         cinque.setWeather("average");
         cinque.setDescription("Is there anything prettier than this area of centuries-old seaside villages on the rugged Italian Riviera coastline? The five towns (Manarola, Riomaggiore, Corniglia, Vernazza and Monterosso al Mare) are made for bucket lists.\n");
-        cinque.setImage(R.drawable.cinque_terre);
+        cinque.setImage(name3);
         String id3 = databaseReference.push().getKey();
         databaseReference.child("City").child(id3).setValue(cinque);
 
         City budapest = new City();
+        String name4 = resource.getResourceName(R.drawable.budapest);
         budapest.setName("Budapest");
         budapest.setCountry("Hungary");
         budapest.setIataCode("BUD");
@@ -222,11 +229,12 @@ public class MainActivity extends AppCompatActivity {
         budapest.setTags(budapesttags);
         budapest.setWeather("cold");
         budapest.setDescription("The capital city of Hungary, Budapest is a fairytale city in Eastern Europe.");
-        budapest.setImage(R.drawable.budapest);
+        budapest.setImage(name4);
         String id4 = databaseReference.push().getKey();
         databaseReference.child("City").child(id4).setValue(budapest);
 
         City beijing = new City();
+        String name5 = resource.getResourceName(R.drawable.beijing);
         beijing.setName("Beijing");
         beijing.setCountry("China");
         beijing.setIataCode("PEK");
@@ -236,12 +244,13 @@ public class MainActivity extends AppCompatActivity {
         beijing.setTags(beijingtags);
         beijing.setWeather("average");
         beijing.setDescription("Beijing is China’s political, economic, and cultural center, with six Unesco World Heritage Sites in this city alone.\n");
-        beijing.setImage(R.drawable.beijing);
+        beijing.setImage(name5);
         String id5 = databaseReference.push().getKey();
         databaseReference.child("City").child(id5).setValue(beijing);
 
 
         City ibiza = new City();
+        String name6 = resource.getResourceName(R.drawable.ibiza);
         ibiza.setName("Ibiza");
         ibiza.setCountry("Spain");
         ibiza.setIataCode("IBZ");
@@ -252,12 +261,13 @@ public class MainActivity extends AppCompatActivity {
         ibiza.setTags(ibizatags);
         ibiza.setWeather("average");
         ibiza.setDescription("Ibiza is also one of the most beautiful Spanish islands, with a pretty Old Town and scenic beaches.");
-        ibiza.setImage(R.drawable.ibiza);
+        ibiza.setImage(name6);
         String id6 = databaseReference.push().getKey();
         databaseReference.child("City").child(id6).setValue(ibiza);
 
 
         City hawaii = new City();
+        String name7 = resource.getResourceName(R.drawable.hawaii);
         hawaii.setName("Hawaii");
         hawaii.setCountry("United States");
         hawaii.setIataCode("HNL");
@@ -267,12 +277,13 @@ public class MainActivity extends AppCompatActivity {
         hawaii.setTags(hawaiitags);
         hawaii.setWeather("hot");
         hawaii.setDescription("The Hawaiian Islands are pure paradise. Explore colorful canyons and waterfalls and eat your body weight in fresh poke");
-        hawaii.setImage(R.drawable.hawaii);
+        hawaii.setImage(name7);
         String id7 = databaseReference.push().getKey();
         databaseReference.child("City").child(id7).setValue(hawaii);
 
 
         City hanoi = new City();
+        String name8 = resource.getResourceName(R.drawable.hanoi);
         hanoi.setName("Hanoi");
         hanoi.setCountry("Vietnam");
         hanoi.setIataCode("HAN");
@@ -282,12 +293,13 @@ public class MainActivity extends AppCompatActivity {
         hanoi.setTags(hanoitags);
         hanoi.setWeather("hot");
         hanoi.setDescription(" Hanoi—the capital of Vietnam—is known for its rich history, busy street life and centuries of French, Asian and Chinese influences all blended into one bustling city.\n");
-        hanoi.setImage(R.drawable.hanoi);
+        hanoi.setImage(name8);
         String id8 = databaseReference.push().getKey();
         databaseReference.child("City").child(id8).setValue(hanoi);
 
 
         City lisbon = new City();
+        String name9 = resource.getResourceName(R.drawable.lisbon);
         lisbon.setName("Lisbon");
         lisbon.setCountry("Portugal");
         lisbon.setIataCode("LIS");
@@ -297,11 +309,12 @@ public class MainActivity extends AppCompatActivity {
         lisbon.setTags(lisbontags);
         lisbon.setWeather("average");
         lisbon.setDescription("Lisbon, the hilly capital of Portugal, is postcard-perfect with its cobbled streets, pristine waters and local Atlantic beaches.");
-        lisbon.setImage(R.drawable.lisbon);
+        lisbon.setImage(name9);
         String id9 = databaseReference.push().getKey();
         databaseReference.child("City").child(id9).setValue(lisbon);
 
         City virunga = new City();
+        String name10 = resource.getResourceName(R.drawable.virunga_park);
         virunga.setName("Virunga National Park");
         virunga.setCountry("Democratic Republic of Congo");
         virunga.setIataCode("FIH");
@@ -310,11 +323,12 @@ public class MainActivity extends AppCompatActivity {
         virunga.setTags(virungatags);
         virunga.setWeather("hot");
         virunga.setDescription("Virunga National Park is one of the most biologically diverse areas on the planet and home to the world’s critically endangered mountain gorillas");
-        virunga.setImage(R.drawable.virunga_park);
+        virunga.setImage(name10);
         String id10 = databaseReference.push().getKey();
         databaseReference.child("City").child(id10).setValue(virunga);
 
         City machuPicchu = new City();
+        String name11 = resource.getResourceName(R.drawable.machu_picchu);
         machuPicchu.setName("Machu Picchu");
         machuPicchu.setCountry("Peru");
         machuPicchu.setIataCode("MFT");
@@ -324,11 +338,12 @@ public class MainActivity extends AppCompatActivity {
         machuPicchu.setTags(machuPicchutags);
         machuPicchu.setWeather("average");
         machuPicchu.setDescription("The wide, panoramic windows are perfect for soaking up the view, plus they serve Pisco Sours on board.");
-        machuPicchu.setImage(R.drawable.machu_picchu);
+        machuPicchu.setImage(name11);
         String id11 = databaseReference.push().getKey();
         databaseReference.child("City").child(id11).setValue(machuPicchu);
 
         City providencia = new City();
+        String name12 = resource.getResourceName(R.drawable.providencia);
         providencia.setName("Providencia");
         providencia.setCountry("Colombia");
         providencia.setIataCode("PVA");
@@ -338,11 +353,12 @@ public class MainActivity extends AppCompatActivity {
         providencia.setTags(providenciatags);
         providencia.setWeather("hot");
         providencia.setDescription("The Colombian island of Providencia is the perfect combination of South America and the Caribbean.");
-        providencia.setImage(R.drawable.providencia);
+        providencia.setImage(name12);
         String id12 = databaseReference.push().getKey();
         databaseReference.child("City").child(id12).setValue(providencia);
 
         City laucala = new City();
+        String name13 = resource.getResourceName(R.drawable.laucala_island);
         laucala.setName("Laucala Island Resort");
         laucala.setCountry("Fiji");
         laucala.setIataCode("NAN");
@@ -352,11 +368,12 @@ public class MainActivity extends AppCompatActivity {
         laucala.setTags(laucalatags);
         laucala.setWeather("hot");
         laucala.setDescription("Laucala Island Resort is a private island in Fiji, in absolute paradise. There are coconut trees, a sustainable farm and miles of beach, as well as coral reefs, postcard-perfect beaches and lush rainforest.");
-        laucala.setImage(R.drawable.laucala_island);
+        laucala.setImage(name13);
         String id13 = databaseReference.push().getKey();
         databaseReference.child("City").child(id13).setValue(laucala);
 
         City seoul = new City();
+        String name14 = resource.getResourceName(R.drawable.seoul);
         seoul.setName("Seoul");
         seoul.setCountry("Korea");
         seoul.setIataCode("ICN");
@@ -365,12 +382,13 @@ public class MainActivity extends AppCompatActivity {
         seoul.setTags(seoultags);
         seoul.setWeather("cold");
         seoul.setDescription("Seoul is a vibrant metropolis where old-meets-new, with pop culture (K-Pop!) alongside Buddhist temples.");
-        seoul.setImage(R.drawable.seoul);
+        seoul.setImage(name14);
         String id14 = databaseReference.push().getKey();
         databaseReference.child("City").child(id14).setValue(seoul);
 
 
         City copenhagen = new City();
+        String name15 = resource.getResourceName(R.drawable.copenhagen);
         copenhagen.setName("Copenhagen");
         copenhagen.setCountry("Denmark");
         copenhagen.setIataCode("CPH");
@@ -380,12 +398,13 @@ public class MainActivity extends AppCompatActivity {
         copenhagen.setTags(copenhagentags);
         copenhagen.setWeather("cold");
         copenhagen.setDescription("Copenhagen’s rustic fishing ports, modern graffiti and winding red brick streets are just some of what makes it such a beautiful bucket list destination.");
-        copenhagen.setImage(R.drawable.copenhagen);
+        copenhagen.setImage(name15);
         String id15 = databaseReference.push().getKey();
         databaseReference.child("City").child(id15).setValue(copenhagen);
 
 
         City cairo = new City();
+        String name16 = resource.getResourceName(R.drawable.cairo);
         cairo.setName("Cairo");
         cairo.setCountry("Egypt");
         cairo.setIataCode("CAI");
@@ -395,12 +414,13 @@ public class MainActivity extends AppCompatActivity {
         cairo.setTags(cairotags);
         cairo.setWeather("hot");
         cairo.setDescription("Cairo is one of the most ancient cities in the world. Sitting on the Nile river with wonderful museums, vibrant culture and friendly locals, it makes for a great holiday.\n");
-        cairo.setImage(R.drawable.cairo);
+        cairo.setImage(name16);
         String id16 = databaseReference.push().getKey();
         databaseReference.child("City").child(id16).setValue(cairo);
 
 
         City santiago = new City();
+        String name17 = resource.getResourceName(R.drawable.santiago);
         santiago.setName("Santiago");
         santiago.setCountry("Chile");
         santiago.setIataCode("SCL");
@@ -410,12 +430,13 @@ public class MainActivity extends AppCompatActivity {
         santiago.setTags(santiagotags);
         santiago.setWeather("average");
         santiago.setDescription("Santiago is a cosmopolitan city with the very best of Chilean culture; art galleries, design shops and handicraft markets, as well as lively Latino nightlife.");
-        santiago.setImage(R.drawable.santiago);
+        santiago.setImage(name17);
         String id17 = databaseReference.push().getKey();
         databaseReference.child("City").child(id17).setValue(santiago);
 
 
         City amsterdam = new City();
+        String name18 = resource.getResourceName(R.drawable.amsterdam);
         amsterdam.setName("Amsterdam");
         amsterdam.setCountry("the Kingdom of the Netherlands");
         amsterdam.setIataCode("AMS");
@@ -425,11 +446,12 @@ public class MainActivity extends AppCompatActivity {
         amsterdam.setTags(amsterdamtags);
         amsterdam.setWeather("average");
         amsterdam.setDescription("Forget about cliched images of smoke shops and gaudy red lights. From floating flower markets to bohemian neighborhoods, this city has it all.");
-        amsterdam.setImage(R.drawable.amsterdam);
+        amsterdam.setImage(name18);
         String id18 = databaseReference.push().getKey();
         databaseReference.child("City").child(id18).setValue(amsterdam);
 
         City barbados = new City();
+        String name19 = resource.getResourceName(R.drawable.barbabos);
         barbados.setName("Barbabos");
         barbados.setCountry("Caribbean island");
         barbados.setIataCode("BGI");
@@ -439,11 +461,12 @@ public class MainActivity extends AppCompatActivity {
         barbados.setTags(barbadostags);
         barbados.setWeather("hot");
         barbados.setDescription("Barbados is one of those magical holiday destinations that everybody dreams about visiting.");
-        barbados.setImage(R.drawable.barbabos);
+        barbados.setImage(name19);
         String id19 = databaseReference.push().getKey();
         databaseReference.child("City").child(id19).setValue(barbados);
 
         City hongkong = new City();
+        String name20 = resource.getResourceName(R.drawable.hongkong);
         hongkong.setName("Hong Kong");
         hongkong.setCountry("China");
         hongkong.setIataCode("HKG");
@@ -453,11 +476,12 @@ public class MainActivity extends AppCompatActivity {
         hongkong.setTags(hongkongtags);
         hongkong.setWeather("average");
         hongkong.setDescription("Famous for its skylines and vibrant food scene, what most people don’t know is that 70% of Hong Kong is mountains and lush parks.");
-        hongkong.setImage(R.drawable.hongkong);
+        hongkong.setImage(name20);
         String id20 = databaseReference.push().getKey();
         databaseReference.child("City").child(id20).setValue(hongkong);
 
         City petra = new City();
+        String name21 = resource.getResourceName(R.drawable.petra);
         petra.setName("Petra");
         petra.setCountry("Jordan");
         petra.setIataCode("KBR");
@@ -467,11 +491,12 @@ public class MainActivity extends AppCompatActivity {
         petra.setTags(petratags);
         petra.setWeather("average");
         petra.setDescription("The ancient Nabatean city of Petra in southern Jordan is surrounded by beautiful red rocks and steep gorges. The world wonder is without a doubt Jordan’s most valuable treasure and greatest tourist attraction.");
-        petra.setImage(R.drawable.petra);
+        petra.setImage(name21);
         String id21 = databaseReference.push().getKey();
         databaseReference.child("City").child(id21).setValue(petra);
 
         City riodeJaneiro = new City();
+        String name22 = resource.getResourceName(R.drawable.riodejaneiro);
         riodeJaneiro.setName("Rio de Janeiro");
         riodeJaneiro.setCountry("Brazil");
         riodeJaneiro.setIataCode("GIG");
@@ -481,11 +506,12 @@ public class MainActivity extends AppCompatActivity {
         riodeJaneiro.setTags(riodeJaneirotags);
         riodeJaneiro.setWeather("hot");
         riodeJaneiro.setDescription("Rio de Janeiro has always been one of the most iconic cities in the world with instantly recognizable landscapes and landmarks.");
-        riodeJaneiro.setImage(R.drawable.riodejaneiro);
+        riodeJaneiro.setImage(name22);
         String id22 = databaseReference.push().getKey();
         databaseReference.child("City").child(id22).setValue(riodeJaneiro);
 
         City london = new City();
+        String name23 = resource.getResourceName(R.drawable.london);
         london.setName("London");
         london.setCountry("England");
         london.setIataCode("YXU");
@@ -494,11 +520,12 @@ public class MainActivity extends AppCompatActivity {
         london.setTags(londontags);
         london.setWeather("average");
         london.setDescription("Pretty pink restaurants, futuristic space-age toilets and jungle skyline views are just some of our favorite things about London.");
-        london.setImage(R.drawable.london);
+        london.setImage(name23);
         String id23 = databaseReference.push().getKey();
         databaseReference.child("City").child(id23).setValue(london);
 
         City singapore = new City();
+        String name24 = resource.getResourceName(R.drawable.singapore);
         singapore.setName("Singapore");
         singapore.setCountry("Singapore");
         singapore.setIataCode("SIN");
@@ -508,11 +535,12 @@ public class MainActivity extends AppCompatActivity {
         singapore.setTags(singaporetags);
         singapore.setWeather("hot");
         singapore.setDescription("Singapore is a small island city-state off southern Malaysia which punches way above its weight on a global level. It’s a modern city with colorful buildings, futuristic bridges and a cloud forest.");
-        singapore.setImage(R.drawable.singapore);
+        singapore.setImage(name24);
         String id24 = databaseReference.push().getKey();
         databaseReference.child("City").child(id24).setValue(singapore);
 
         City bali = new City();
+        String name25 = resource.getResourceName(R.drawable.bali);
         bali.setName("Bali");
         bali.setCountry("Indonesia");
         bali.setIataCode("DPS");
@@ -522,11 +550,12 @@ public class MainActivity extends AppCompatActivity {
         bali.setTags(balitags);
         bali.setWeather("hot");
         bali.setDescription("A place where you can relax you can find beaches, volcanoes, and jungles. \n");
-        bali.setImage(R.drawable.bali);
+        bali.setImage(name25);
         String id25 = databaseReference.push().getKey();
         databaseReference.child("City").child(id25).setValue(bali);
 
         City newOrleans = new City();
+        String name26 = resource.getResourceName(R.drawable.neworleans);
         newOrleans.setName("New Orleans");
         newOrleans.setCountry("United States");
         newOrleans.setIataCode("MSY");
@@ -536,12 +565,13 @@ public class MainActivity extends AppCompatActivity {
         newOrleans.setTags(newOrleanstags);
         newOrleans.setWeather("hot");
         newOrleans.setDescription("The lively city known for street music, festive vibes and a melting pot");
-        newOrleans.setImage(R.drawable.neworleans);
+        newOrleans.setImage(name26);
         String id26 = databaseReference.push().getKey();
         databaseReference.child("City").child(id26).setValue(newOrleans);
 
 
         City kerry = new City();
+        String name27 = resource.getResourceName(R.drawable.kerry);
         kerry.setName("Kerry");
         kerry.setCountry("Ireland");
         kerry.setIataCode("KIR");
@@ -551,11 +581,12 @@ public class MainActivity extends AppCompatActivity {
         kerry.setTags(kerrytags);
         kerry.setWeather("average");
         kerry.setDescription("The city is famous for having unique small towns such as dingle and Killarney National Park, mountains, lakes and coasts.");
-        kerry.setImage(R.drawable.kerry);
+        kerry.setImage(name27);
         String id27 = databaseReference.push().getKey();
         databaseReference.child("City").child(id27).setValue(kerry);
 
         City marrakesh = new City();
+        String name28 = resource.getResourceName(R.drawable.marrakech);
         marrakesh.setName("Marrakesh");
         marrakesh.setCountry("Morocco");
         marrakesh.setIataCode("RAK");
@@ -564,11 +595,12 @@ public class MainActivity extends AppCompatActivity {
         marrakesh.setTags(marrakeshtags);
         marrakesh.setWeather("hot");
         marrakesh.setDescription("This ancient walled city is home to mosques, places and lush gardens. It is known as red city");
-        marrakesh.setImage(R.drawable.marrakech);
+        marrakesh.setImage(name28);
         String id28 = databaseReference.push().getKey();
         databaseReference.child("City").child(id28).setValue(marrakesh);
 
         City sydney = new City();
+        String name29 = resource.getResourceName(R.drawable.sydney);
         sydney.setName("Sydney");
         sydney.setCountry("Australia");
         sydney.setIataCode("SYD");
@@ -578,11 +610,12 @@ public class MainActivity extends AppCompatActivity {
         sydney.setTags(sydneytags);
         sydney.setWeather("average");
         sydney.setDescription("This city has gorgeous beaches, great-cafes and world class entertainment on offer.");
-        sydney.setImage(R.drawable.sydney);
+        sydney.setImage(name29);
         String id29 = databaseReference.push().getKey();
         databaseReference.child("City").child(id29).setValue(sydney);
 
         City maldives = new City();
+        String name30 = resource.getResourceName(R.drawable.maldives);
         maldives.setName("Maldives");
         maldives.setIataCode("MLE");
         ArrayList<String> maldivestags = new ArrayList<String>();
@@ -592,11 +625,12 @@ public class MainActivity extends AppCompatActivity {
         maldives.setTags(maldivestags);
         maldives.setWeather("average");
         maldives.setDescription("This city is home to some of the world’s most luxurious hotel resorts with white sandy beaches, underwater villas and restaurants and bright blue waters.");
-        maldives.setImage(R.drawable.maldives);
+        maldives.setImage(name30);
         String id30 = databaseReference.push().getKey();
         databaseReference.child("City").child(id30).setValue(maldives);
 
         City paris = new City();
+        String name31 = resource.getResourceName(R.drawable.paris);
         paris.setName("Paris");
         paris.setCountry("France");
         paris.setIataCode("CDG");
@@ -606,11 +640,12 @@ public class MainActivity extends AppCompatActivity {
         paris.setTags(paristags);
         paris.setWeather("average");
         paris.setDescription("It is one of the most iconic cities in the world, famous for Eiffel Tower, Arc de Triomphe, Notre Dame cathedral.");
-        paris.setImage(R.drawable.paris);
+        paris.setImage(name31);
         String id31 = databaseReference.push().getKey();
         databaseReference.child("City").child(id31).setValue(paris);
 
         City capeTown= new City();
+        String name32 = resource.getResourceName(R.drawable.capetown);
         capeTown.setName("Cape Town");
         capeTown.setCountry("South Africa");
         capeTown.setIataCode("CPT");
@@ -619,11 +654,12 @@ public class MainActivity extends AppCompatActivity {
         capeTown.setTags(capetags);
         capeTown.setWeather("hot");
         capeTown.setDescription(" Cape town is a dream location to visit with endless natural beauty and cliff top views, pastel pink neighborhoods and turquoise waters");
-        capeTown.setImage(R.drawable.capetown);
+        capeTown.setImage(name32);
         String id32 = databaseReference.push().getKey();
         databaseReference.child("City").child(id32).setValue(capeTown);
 
         City dubai= new City();
+        String name33 = resource.getResourceName(R.drawable.dubai);
         dubai.setName("Dubai");
         dubai.setCountry("UAE");
         dubai.setIataCode("DXB");
@@ -633,11 +669,12 @@ public class MainActivity extends AppCompatActivity {
         dubai.setTags(dubaitags);
         dubai.setWeather("hot");
         dubai.setDescription("The high-flying city of the U.A. E, Dubai is one the most glamorous destinations you’ll ever visit, and is particularly popular with big 7 travel readers.");
-        dubai.setImage(R.drawable.dubai);
+        dubai.setImage(name33);
         String id33 = databaseReference.push().getKey();
         databaseReference.child("City").child(id33).setValue(dubai);
 
         City bora= new City();
+        String name34 = resource.getResourceName(R.drawable.borabora);
         bora.setName("Bora Bora");
         bora.setCountry("French Polynesia");
         bora.setIataCode("BOB");
@@ -647,11 +684,12 @@ public class MainActivity extends AppCompatActivity {
         bora.setTags(boratags);
         bora.setWeather("average");
         bora.setDescription("Bora bora is Tahiti’s most famous island. It has some overwater bungalows and underwater adventures..");
-        bora.setImage(R.drawable.borabora);
+        bora.setImage(name34);
         String id34 = databaseReference.push().getKey();
         databaseReference.child("City").child(id34).setValue(bora);
 
         City newYork= new City();
+        String name35 = resource.getResourceName(R.drawable.new_york1);
         newYork.setName("New York");
         newYork.setCountry("America");
         newYork.setIataCode("LGA");
@@ -661,11 +699,12 @@ public class MainActivity extends AppCompatActivity {
         newYork.setTags(newYorktags);
         newYork.setWeather("cold");
         newYork.setDescription("This city has charming upstate scenery, world-class cuisine and culture. The city’s five boroughs all have special features.");
-        newYork.setImage(R.drawable.new_york1);
+        newYork.setImage(name35);
         String id35 = databaseReference.push().getKey();
         databaseReference.child("City").child(id35).setValue(newYork);
 
         City Dubrovnik= new City();
+        String name36 = resource.getResourceName(R.drawable.dubrovnik);
         Dubrovnik.setName("Dubrovnik");
         Dubrovnik.setCountry("Croatia");
         Dubrovnik.setIataCode("DBV");
@@ -675,11 +714,12 @@ public class MainActivity extends AppCompatActivity {
         Dubrovnik.setTags(Dubrovniktags);
         Dubrovnik.setWeather("cold");
         Dubrovnik.setDescription("This city is famous for winding streets, cliff side beach bars and UNESCO World Heritage Site of the old Town.");
-        Dubrovnik.setImage(R.drawable.dubrovnik);
+        Dubrovnik.setImage(name36);
         String id36 = databaseReference.push().getKey();
         databaseReference.child("City").child(id36).setValue(Dubrovnik);
 
         City Edinburgh= new City();
+        String name37 = resource.getResourceName(R.drawable.edinburgh);
         Edinburgh.setName("Edinburgh");
         Edinburgh.setCountry("Scotland");
         Edinburgh.setIataCode("EDI");
@@ -689,11 +729,12 @@ public class MainActivity extends AppCompatActivity {
         Edinburgh.setTags(Edinburghtags);
         Edinburgh.setWeather("hot");
         Edinburgh.setDescription("with the historic edinburgh castle looming over the city, culture in spades and wonderfully friendly locals, this is one of the world’s greatest city breaks.");
-        Edinburgh.setImage(R.drawable.edinburgh);
+        Edinburgh.setImage(name37);
         String id37 = databaseReference.push().getKey();
         databaseReference.child("City").child(id37).setValue(Edinburgh);
 
         City Rome= new City();
+        String name38 = resource.getResourceName(R.drawable.rome);
         Rome.setName("Rome");
         Rome.setCountry("Italy");
         Rome.setIataCode("FCO");
@@ -704,11 +745,12 @@ public class MainActivity extends AppCompatActivity {
         Rome.setTags(Rometags);
         Rome.setWeather("average");
         Rome.setDescription("whether it’s your first time in Rome or your 50th, you’ll always discover something new each time you stroll the scenic streets.");
-        Rome.setImage(R.drawable.rome);
+        Rome.setImage(name38);
         String id38 = databaseReference.push().getKey();
         databaseReference.child("City").child(id38).setValue(Rome);
 
         City ParoValley= new City();
+        String name39 = resource.getResourceName(R.drawable.poravalley);
         ParoValley.setName("Paro Valley");
         ParoValley.setCountry("Bhutan");
         ParoValley.setIataCode("PBH");
@@ -718,11 +760,12 @@ public class MainActivity extends AppCompatActivity {
         ParoValley.setTags(ParoValleytags);
         ParoValley.setWeather("average");
         ParoValley.setDescription("Paro Valley is known for its monasteries, fortresses (or dzongs) and dramatic landscapes. Tucked between China and India, Bhutan is a mysterious country that prides itself on sustainable tourism.");
-        ParoValley.setImage(R.drawable.poravalley);
+        ParoValley.setImage(name39);
         String id39 = databaseReference.push().getKey();
         databaseReference.child("City").child(id39).setValue(ParoValley);
 
         City Jaipur = new City();
+        String name40 = resource.getResourceName(R.drawable.jaipur);
         Jaipur.setName("Jaipur");
         Jaipur.setCountry("India");
         Jaipur.setIataCode("JAI");
@@ -732,11 +775,12 @@ public class MainActivity extends AppCompatActivity {
         Jaipur.setTags(Jaipurtags);
         Jaipur.setWeather("hot");
         Jaipur.setDescription("Jaipur is known as the ‘Pink City’ for its pale terracotta buildings. This was originally done to impress the visiting Prince Albert during his 1876 tour of India by order of the Maharaja (Sawai Ram Singh).");
-        Jaipur.setImage(R.drawable.jaipur);
+        Jaipur.setImage(name40);
         String id40 = databaseReference.push().getKey();
         databaseReference.child("City").child(id40).setValue(Jaipur);
 
         City Waikato = new City();
+        String name41 = resource.getResourceName(R.drawable.waikato);
         Waikato.setName("Waikato");
         Waikato.setCountry("New Zealand");
         Waikato.setIataCode("HLZ");
@@ -747,11 +791,12 @@ public class MainActivity extends AppCompatActivity {
         Waikato.setTags(Waikatotags);
         Waikato.setWeather("hot");
         Waikato.setDescription("Waikato, a region in New Zealand’s North Island, is home to massive underground caves, lush rainforest and the buzzy city of Hamilton.");
-        Waikato.setImage(R.drawable.waikato);
+        Waikato.setImage(name41);
         String id41 = databaseReference.push().getKey();
         databaseReference.child("City").child(id41).setValue(Waikato);
 
         City Havana= new City();
+        String name42 = resource.getResourceName(R.drawable.havana);
         Havana.setName("Havana");
         Havana.setCountry("Cuba");
         Havana.setIataCode("HAV");
@@ -761,11 +806,12 @@ public class MainActivity extends AppCompatActivity {
         Havana.setTags(Havanatags);
         Havana.setWeather("hot");
         Havana.setDescription("Cuba’s capital is almost 500 years old and a riot of color. Brightly painted buildings and vintage cars make Havana a photogenic dream.");
-        Havana.setImage(R.drawable.havana);
+        Havana.setImage(name42);
         String id42 = databaseReference.push().getKey();
         databaseReference.child("City").child(id42).setValue(Havana);
 
         City Tokyo = new City();
+        String name43 = resource.getResourceName(R.drawable.tokyo);
         Tokyo.setName("Tokyo");
         Tokyo.setCountry("Japan");
         Tokyo.setIataCode("HND");
@@ -775,11 +821,12 @@ public class MainActivity extends AppCompatActivity {
         Tokyo.setTags(Tokyotags);
         Tokyo.setWeather("average");
         Tokyo.setDescription("Visiting Tokyo is like visiting the future—flashing neon lights, incredible technology—yet there’s still a rich sense of culture and history.");
-        Tokyo.setImage(R.drawable.tokyo);
+        Tokyo.setImage(name43);
         String id43 = databaseReference.push().getKey();
         databaseReference.child("City").child(id43).setValue(Tokyo);
 
         City Antarctica = new City();
+        String name44 = resource.getResourceName(R.drawable.antartica);
         Antarctica.setName("Antarctica");
         Antarctica.setIataCode("SAYE");
         ArrayList<String> Antarcticatags = new ArrayList<String>();
@@ -787,11 +834,12 @@ public class MainActivity extends AppCompatActivity {
         Antarctica.setTags(Antarcticatags);
         Antarctica.setWeather("cold");
         Antarctica.setDescription("Earth’s southernmost continent, Antarctica is a once-in-a-lifetime destination. Nowhere else can compare with the extreme remoteness of this snowy place.");
-        Antarctica.setImage(R.drawable.antartica);
+        Antarctica.setImage(name44);
         String id44 = databaseReference.push().getKey();
         databaseReference.child("City").child(id44).setValue(Antarctica);
 
         City Vancouver= new City();
+        String name45 = resource.getResourceName(R.drawable.vancouver);
         Vancouver.setName("Vancouver");
         Vancouver.setCountry("Canada");
         Vancouver.setIataCode("YVR");
@@ -801,11 +849,12 @@ public class MainActivity extends AppCompatActivity {
         Vancouver.setTags(Vancouvertags);
         Vancouver.setWeather("cold");
         Vancouver.setDescription("Vancouver is surrounded by water yet close to the mountains and has world-class art, restaurants and heaps of other attractions to keep you entertained.");
-        Vancouver.setImage(R.drawable.vancouver);
+        Vancouver.setImage(name45);
         String id45 = databaseReference.push().getKey();
         databaseReference.child("City").child(id45).setValue(Vancouver);
 
         City LosAngeles = new City();
+        String name46 = resource.getResourceName(R.drawable.losangles);
         LosAngeles.setName("Los Angeles");
         LosAngeles.setCountry("United States");
         LosAngeles.setIataCode("LAX");
@@ -815,11 +864,12 @@ public class MainActivity extends AppCompatActivity {
         LosAngeles.setTags(LosAngelestags);
         LosAngeles.setWeather("average");
         LosAngeles.setDescription(" In a city with year-round sunshine, glam bars, beaches and hikes, there are endless incredible experiences to enjoy in Los Angeles.");
-        LosAngeles.setImage(R.drawable.losangles);
+        LosAngeles.setImage(name46);
         String id46 = databaseReference.push().getKey();
         databaseReference.child("City").child(id46).setValue(LosAngeles);
 
         City Kruger = new City();
+        String name47 = resource.getResourceName(R.drawable.krugernationalpark);
         Kruger.setName("Kruger National Park");
         Kruger.setCountry("South Africa");
         Kruger.setIataCode("MQP");
@@ -828,11 +878,12 @@ public class MainActivity extends AppCompatActivity {
         Kruger.setTags(Krugertags);
         Kruger.setWeather("average");
         Kruger.setDescription("The Kruger National Park is a vast space in northeastern South Africa that is home to a huge array of wildlife.");
-        Kruger.setImage(R.drawable.krugernationalpark);
+        Kruger.setImage(name46);
         String id47 = databaseReference.push().getKey();
         databaseReference.child("City").child(id47).setValue(Kruger);
 
         City Santorini= new City();
+        String name48 = resource.getResourceName(R.drawable.santorini);
         Santorini.setName("Santorini");
         Santorini.setCountry("Greece");
         Santorini.setIataCode("JTR");
@@ -842,11 +893,12 @@ public class MainActivity extends AppCompatActivity {
         Santorini.setTags(Santorinitags);
         Santorini.setWeather("average");
         Santorini.setDescription("Beaches with volcanic black or red sand and clear blue waters make this an ideal holiday spot. With its famous Santorini sunsets, it’s no wonder that it’s one of the most popular bucket list destinations.");
-        Santorini.setImage(R.drawable.santorini);
+        Santorini.setImage(name48);
         String id48 = databaseReference.push().getKey();
         databaseReference.child("City").child(id48).setValue(Santorini);
 
         City Moscow = new City();
+        String name49 = resource.getResourceName(R.drawable.moscow);
         Moscow.setName("Moscow");
         Moscow.setCountry("Russia");
         Moscow.setIataCode("DME");
@@ -855,14 +907,13 @@ public class MainActivity extends AppCompatActivity {
         Moscow.setTags(Moscowtags);
         Moscow.setWeather("cold");
         Moscow.setDescription("Russia’s cosmopolitan capital, Moscow is a beautiful destination to visit in any season. Culture lovers will be impressed with the museums and ballet.");
-        Moscow.setImage(R.drawable.moscow);
+        Moscow.setImage(name49);
         String id49 = databaseReference.push().getKey();
         databaseReference.child("City").child(id49).setValue(Moscow);
+         }
 
-    }
 
     public void start(){
-//        Intent intent = new Intent(this, ResultsPage.class);
         Intent intent = new Intent(this, Page2.class);
         startActivity(intent);
     }

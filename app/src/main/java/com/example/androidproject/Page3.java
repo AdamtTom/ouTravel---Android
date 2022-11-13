@@ -2,8 +2,8 @@ package com.example.androidproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,22 +27,99 @@ public class Page3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page3);
-        Button button = findViewById(R.id.Page3_button1);
-        button.setOnClickListener(view -> next());
+        Intent intent = getIntent();
+        Bundle b = intent.getBundleExtra("bundle");
 
         //////////////////////////////////////////////////////
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference();
         //////////////////////////////////////////////////////
+
+
+        CheckBox check_box_nature = findViewById(R.id.Page3_checkBox);
+        CheckBox check_box_culture = findViewById(R.id.Page3_checkBox1);
+        CheckBox check_box_partying = findViewById(R.id.Page3_checkBox2);
+        CheckBox check_box_relaxation = findViewById(R.id.Page3_checkBox3);
+
+
+        ArrayList<CheckBox> checkBoxArrayListInterests = new ArrayList<>();
+        checkBoxArrayListInterests.add(check_box_nature);
+        checkBoxArrayListInterests.add(check_box_culture);
+        checkBoxArrayListInterests.add(check_box_partying);
+        checkBoxArrayListInterests.add(check_box_relaxation);
+
+        CheckBox check_box_hot = findViewById(R.id.Page3_checkBox4);
+        CheckBox check_box_cold = findViewById(R.id.Page3_checkBox5);
+        CheckBox check_box_average = findViewById(R.id.Page3_checkBox6);
+
+
+        ArrayList<CheckBox> checkBoxArrayListWeather = new ArrayList<>();
+        checkBoxArrayListWeather.add(check_box_hot);
+        checkBoxArrayListWeather.add(check_box_cold);
+        checkBoxArrayListWeather.add(check_box_average);
+
+
+        ArrayList<String> selectedCheckBoxesInterests = new ArrayList<>();
+        for (CheckBox checkBox : checkBoxArrayListInterests) {
+            // Override the onCheckedChanged method defined in CompoundButton.OnCheckedChangeListener
+            checkBox.setOnCheckedChangeListener((compoundButton, bool) -> {
+                if (bool){
+                    System.out.println(checkBox.getId() + " Checked");
+                    String selectedCheckBox = checkBox.getText().toString();
+                    selectedCheckBoxesInterests.add(selectedCheckBox);
+                } else {
+                    String unselectedCheckBox = checkBox.getText().toString();
+                    System.out.println(checkBox.getId() + " Unhecked");
+                    selectedCheckBoxesInterests.remove(unselectedCheckBox);
+                }
+            });
+        }
+
+        ArrayList<String> selectedCheckBoxesWeather = new ArrayList<>();
+        for (CheckBox checkBox : checkBoxArrayListWeather) {
+            // Override the onCheckedChanged method defined in CompoundButton.OnCheckedChangeListener
+            checkBox.setOnCheckedChangeListener((compoundButton, bool) -> {
+                if (bool){
+                    System.out.println(checkBox.getId() + " Checked");
+                    String selectedCheckBox = checkBox.getText().toString();
+                    selectedCheckBoxesWeather.add(selectedCheckBox);
+                } else {
+                    String unselectedCheckBox = checkBox.getText().toString();
+                    System.out.println(checkBox.getId() + " Unhecked");
+                    selectedCheckBoxesWeather.remove(unselectedCheckBox);
+                }
+            });
+        }
+
+        Button nextButton = findViewById(R.id.Page3_button1);
+        nextButton.setOnClickListener(view -> {
+            if (selectedCheckBoxesInterests.size() == 0 || selectedCheckBoxesWeather.size() == 0) {
+                Toast.makeText(getApplicationContext(),  "Must select at least 1 option for interest and weather.", Toast.LENGTH_SHORT).show();
+            } else {
+                for (int i = 0; i <  selectedCheckBoxesInterests.size(); i++){
+                    System.out.println(selectedCheckBoxesInterests.get(i));
+                    b.putString("checkboxBundleInterests" + i, selectedCheckBoxesInterests.get(i));
+                }
+                for (int i = 0; i <  selectedCheckBoxesWeather.size(); i++){
+                    System.out.println(selectedCheckBoxesWeather.get(i));
+                    b.putString("checkboxBundleWeather" + i, selectedCheckBoxesWeather.get(i));
+                }
+
+                b.putInt("checkboxInterestBundleSize", selectedCheckBoxesInterests.size());
+                b.putInt("checkboxWeatherBundleSize", selectedCheckBoxesWeather.size());
+                next(b);
+            }
+        });
+
     }
 
-    public void next(){
+    public void next(Bundle b){
         /////////////////////////////////////////////////////////////
         ArrayList<City> cities = new ArrayList<>();
         Bundle bundle = new Bundle();
         Intent intent = new Intent(this, Page4.class);
         databaseReference.child("City").addListenerForSingleValueEvent(new ValueEventListener() {
-//            int counter = 0;
+            //            int counter = 0;
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
@@ -56,7 +133,8 @@ public class Page3 extends AppCompatActivity {
 //                    }
                 }
                 bundle.putParcelableArrayList("cities", cities);
-                intent.putExtras(bundle);
+                intent.putExtra("page2",bundle);
+                intent.putExtra("bundle", b);
                 startActivity(intent);
             }
 

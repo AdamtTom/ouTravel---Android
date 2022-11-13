@@ -23,7 +23,7 @@ public class City implements Parcelable {
     public String weather;
     // We might want to make this an int array later, to be able to display multiple
     // images of the same city
-    private int image;
+    private String image;
 
     public City() {
 
@@ -36,7 +36,7 @@ public class City implements Parcelable {
         tags = in.createStringArrayList();
         description = in.readString();
         weather = in.readString();
-        image = in.readInt();
+        image = in.readString();
     }
 
     @Override
@@ -47,7 +47,7 @@ public class City implements Parcelable {
         dest.writeStringList(tags);
         dest.writeString(description);
         dest.writeString(weather);
-        dest.writeInt(image);
+        dest.writeString(image);
     }
 
     @Override
@@ -81,7 +81,7 @@ public class City implements Parcelable {
     public void setWeather(String weather){
         this.weather = weather;
     }
-    public void setImage(int image){
+    public void setImage(String image){
         this.image = image;
     }
 
@@ -97,7 +97,7 @@ public class City implements Parcelable {
     public String getWeather(){
         return this.weather;
     }
-    public int getImage(){
+    public String getImage(){
         return this.image;
     }
 
