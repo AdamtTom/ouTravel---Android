@@ -108,9 +108,9 @@
         android:layout_below="@+id/page2_header3"
         android:layout_alignStart="@id/page2_header1"
         android:ems="10"
-        android:autofillHints="postalAddress"
+        android:inputType = "number"
+        android:autofillHints=""
         android:hint="@string/page2_hint2"
-        android:inputType="textPersonName"
         android:minHeight="48dp" />
 
     <Button
