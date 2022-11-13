@@ -83,20 +83,12 @@
         android:textSize="20sp"
         android:layout_below="@+id/Page3_checkBox5"
         android:layout_marginStart="50dp"/>
-    <CheckBox
-        android:id="@+id/Page3_checkBox7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Page3_snowy"
-        android:textSize="20sp"
-        android:layout_below="@+id/Page3_checkBox6"
-        android:layout_marginStart="50dp"/>
 
     <Button
         android:id="@+id/Page3_button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Page3_checkBox7"
+        android:layout_below="@id/Page3_checkBox6"
         android:layout_marginStart="260dp"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
