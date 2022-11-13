@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AndroidProject</string>
     <string name="main_page_welcome">Welcome to YouTravel!</string>
-    <string name="main_page_content">Want to travel, but don\'t know where to go?<br/> Let us help you make that decision!</string>
+    <string name="main_page_content">Want to travel, but don\'t know where to go?<br /> Let us help you make that decision!</string>
     <string name="page6_statistics">STATISTICS</string>
     <string-array name="page6_fragmentList">
         <item>Price: $1700 - $2000</item>
