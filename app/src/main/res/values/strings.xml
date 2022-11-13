@@ -24,10 +24,10 @@
     <string name="page2_helper1">From:</string>
     <string name="page2_helper2">To:</string>
     <string name="page2_btn1">Choose Date</string>
-    <string name="page2_header2">Please enter your address:</string>
-    <string name="page2_hint">Address</string>
+    <string name="page2_header2">Please enter your city airport\'s IATA code:</string>
+    <string name="page2_hint">IATA code</string>
     <string name="page2_header3">Please enter total number of Passengers:</string>
-    <string name="page2_hint2">number of Passengers</string>
+    <string name="page2_hint2">Number of Passengers</string>
     <string name="next">Next</string>
     <string name="page4_title">Places You May Enjoy</string>
     <string name ="page4_location">Locations you may like to visit</string>

@@ -71,7 +71,7 @@ public class Page2 extends AppCompatActivity implements DatePickerDialog.OnDateS
         }
 
         else if(add.length() == 0 || address.matches(" ")||address.trim().matches("")){
-            Toast.makeText(getApplicationContext(),"Please enter valid address", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Please enter valid IATA code", Toast.LENGTH_LONG).show();
         }
         else if(passenger.length() == 0 || number.matches(" ")||number.trim().matches("") ){
             Toast.makeText(getApplicationContext(),"Please enter valid number of passengers", Toast.LENGTH_LONG).show();
@@ -79,7 +79,7 @@ public class Page2 extends AppCompatActivity implements DatePickerDialog.OnDateS
         else {
             bundle.putString("start", departureDate);
             bundle.putString("end", returnDate);
-            bundle.putString("address", address);
+            bundle.putString("originIATA", address);
             bundle.putString("passengers", number);
             intent.putExtra("bundle", bundle);
             startActivity(intent);
