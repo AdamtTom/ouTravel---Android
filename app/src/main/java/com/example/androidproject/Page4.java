@@ -30,26 +30,26 @@ public class Page4 extends AppCompatActivity {
 
         Bundle bundle = getIntent().getBundleExtra("page2");
         Bundle b1 = getIntent().getBundleExtra("bundle");
-//        cities = bundle.getParcelableArrayList("cities");
+        cities = bundle.getParcelableArrayList("cities");
 
 //        Toast.makeText(this, " " + cities.size(), Toast.LENGTH_SHORT).show();
 //        Toast.makeText(this, " " + cities.get(0).getImage(), Toast.LENGTH_SHORT).show();
 
-//        for (int i = 0; i < cities.size(); i++) {
-//            String s  = cities.get(i).getImage();
-//            int img = resources.getIdentifier(s, "drawable", getApplication().getPackageName());
-//            images.add(img);
-//            cityNames.add(cities.get(i).getName());
-//            countryNames.add(cities.get(i).getCountry());
-//            descriptions.add(cities.get(i).getDescription());
-//        }
+        for (int i = 0; i < cities.size(); i++) {
+            String s  = cities.get(i).getImage();
+            int img = resources.getIdentifier(s, "drawable", getApplication().getPackageName());
+            images.add(img);
+            cityNames.add(cities.get(i).getName());
+            countryNames.add(cities.get(i).getCountry());
+            descriptions.add(cities.get(i).getDescription());
+        }
         viewPagerItems = new ArrayList<>();
 
-//        for (int j = 0; j < cities.size(); j++) {
-//            ViewPagerItem viewPagerItem = new ViewPagerItem(images.get(j), cityNames.get(j),
-//                                                        countryNames.get(j), descriptions.get(j));
-//            viewPagerItems.add(viewPagerItem);
-//        }
+        for (int j = 0; j < cities.size(); j++) {
+            ViewPagerItem viewPagerItem = new ViewPagerItem(images.get(j), cityNames.get(j),
+                                                        countryNames.get(j), descriptions.get(j));
+            viewPagerItems.add(viewPagerItem);
+        }
 
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(viewPagerItems);
         viewPager2.setAdapter(myPagerAdapter);

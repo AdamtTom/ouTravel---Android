@@ -84,7 +84,7 @@ public class ResultsPage extends AppCompatActivity {
         destIATA = dest.getIataCode();
         String departDate = b1.getString("start");
         String returnDate =b1.getString("end");
-        String adults = "1";
+        String adults = b1.getString("passengers");
         String currency = "CAD";
         String children = "0";
         String infants = "0";
@@ -117,7 +117,7 @@ public class ResultsPage extends AppCompatActivity {
         returnDateTV.setText(Html.fromHtml(sourceString, 0));
 
         TextView passengers = findViewById(R.id.passengerCountResult);
-        sourceString = "<b>Passengers:</b> 1";// + returnDate;
+        sourceString = "<b>Passengers:</b>" + adults;
         passengers.setText(Html.fromHtml(sourceString, 0));
 
 //        ResultsPage.AsyncTaskRunner runner = new ResultsPage.AsyncTaskRunner();
