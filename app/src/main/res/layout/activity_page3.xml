@@ -1,94 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal">
 
 
     <TextView
         android:id="@+id/Page3_textView1"
-        android:layout_width="wrap_content"
+        android:layout_width="352dp"
         android:layout_height="wrap_content"
-        android:text="@string/Page3_chooseInterest"
-        android:textSize="25sp"
-        android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="5dp"
+        android:text="@string/Page3_chooseInterest"
+        android:textSize="20sp" />
 
     <CheckBox
         android:id="@+id/Page3_checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Page3_nature"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:layout_below="@+id/Page3_textView1"
-        android:layout_marginStart="50dp"/>
+        android:layout_marginStart="30dp"/>
     <CheckBox
         android:id="@+id/Page3_checkBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Page3_culture"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:layout_below="@+id/Page3_checkBox"
-        android:layout_marginStart="50dp"/>
+        android:layout_marginStart="30dp"/>
     <CheckBox
         android:id="@+id/Page3_checkBox2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Page3_partying"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:layout_below="@+id/Page3_checkBox1"
-        android:layout_marginStart="50dp"/>
+        android:layout_marginStart="30dp"/>
+
     <CheckBox
         android:id="@+id/Page3_checkBox3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/Page3_relaxation"
-        android:textSize="20sp"
         android:layout_below="@+id/Page3_checkBox2"
-        android:layout_marginStart="50dp"/>
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/Page3_relaxation"
+        android:textSize="18sp" />
+
     <TextView
         android:id="@+id/Page3_textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Page3_chooseWeather"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:layout_below="@id/Page3_checkBox3"
         android:layout_marginTop="20dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginBottom="1dp"/>
 
     <CheckBox
         android:id="@+id/Page3_checkBox4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Page3_hot"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:layout_below="@+id/Page3_textView2"
-        android:layout_marginStart="50dp"/>
+        android:layout_marginStart="30dp"/>
     <CheckBox
         android:id="@+id/Page3_checkBox5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Page3_cold"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:layout_below="@+id/Page3_checkBox4"
-        android:layout_marginStart="50dp"/>
+        android:layout_marginStart="30dp"/>
     <CheckBox
         android:id="@+id/Page3_checkBox6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Page3_average"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:layout_below="@+id/Page3_checkBox5"
-        android:layout_marginStart="50dp"/>
+        android:layout_marginStart="30dp"/>
+
+    <TextView
+        android:id="@+id/Page3_textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Page3_chooseCurrency"
+        android:textSize="20sp"
+        android:layout_below="@id/Page3_checkBox6"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="15dp"/>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_below="@id/Page3_textView3" />
 
     <Button
         android:id="@+id/Page3_button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Page3_checkBox6"
+        android:layout_below="@id/spinner"
         android:layout_marginStart="260dp"
         android:layout_marginTop="20dp"
         android:textSize="20sp"
