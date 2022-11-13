@@ -55,17 +55,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Page6"
-            android:exported="true">
-
-            <!-- android:parentActivityName=".Page5"> -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".Page7"
             android:exported="true"
             android:parentActivityName=".Page6">
