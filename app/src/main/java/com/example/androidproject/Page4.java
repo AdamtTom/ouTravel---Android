@@ -33,7 +33,8 @@ public class Page4 extends AppCompatActivity {
         ///////////////////////////////////////////////////////////////////////
         viewPager2 = findViewById(R.id.page4ViewPager);
 
-        Bundle bundle = getIntent().getExtras();
+        Bundle bundle = getIntent().getBundleExtra("page2");
+        Bundle b1 = getIntent().getBundleExtra("bundle");
         cities = bundle.getParcelableArrayList("cities");
 
 //        Toast.makeText(this, " " + cities.size(), Toast.LENGTH_SHORT).show();
@@ -65,7 +66,7 @@ public class Page4 extends AppCompatActivity {
 
 
         ImageButton check = findViewById(R.id.imageButtonCheck);
-        check.setOnClickListener(view -> next(viewPager2.getCurrentItem()));
+        check.setOnClickListener(view -> next(viewPager2.getCurrentItem(), b1));
 
 
 //        ViewPagerItem viewPagerItem = new ViewPagerItem(images.get(0), cityNames.get(0),
@@ -100,12 +101,13 @@ public class Page4 extends AppCompatActivity {
 //        button.setOnClickListener(view -> next());
     }
 
-    public void next(int cityIndex){
+    public void next(int cityIndex, Bundle c){
 //        Toast.makeText(getApplicationContext(), "Current Page:" + viewPager2.getCurrentItem(), Toast.LENGTH_SHORT).show();
         Bundle b = new Bundle();
         b.putParcelable("destination", cities.get(cityIndex));
         Intent intent = new Intent(this, ResultsPage.class);
-        intent.putExtras(b);
+        intent.putExtra("Page4",b);
+        intent.putExtra("bundle", c);
         startActivity(intent);
     }
 }

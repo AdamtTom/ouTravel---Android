@@ -51,6 +51,14 @@ public class Page2 extends AppCompatActivity implements DatePickerDialog.OnDateS
 
     public void next(){
         Intent intent = new Intent(this, Page3.class);
+        Bundle b = new Bundle();
+        TextView t = findViewById(R.id.emptyTextView1);
+        String s = t.getText().toString();
+        TextView t2 = findViewById(R.id.emptyTextView2);
+        String s2 = t2.getText().toString();
+        b.putString("start",s);
+        b.putString("end", s2);
+        intent.putExtra("bundle", b);
         startActivity(intent);
     }
 }

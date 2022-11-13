@@ -75,14 +75,15 @@ public class ResultsPage extends AppCompatActivity {
         dash1 = findViewById(R.id.dash1);
         dash2 = findViewById(R.id.dash2);
 
-        Bundle bundle = getIntent().getExtras();
+        Bundle bundle = getIntent().getBundleExtra("Page4");
+        Bundle b1 = getIntent().getBundleExtra("bundle");
         City dest = bundle.getParcelable("destination");
 //        Toast.makeText(getApplicationContext(), "Iata: " + dest.getIataCode(), Toast.LENGTH_LONG).show();
 
         originIATA = "YVR";
         destIATA = dest.getIataCode();
-        String departDate = "2022-11-26";
-        String returnDate = "2022-12-19";
+        String departDate = b1.getString("start");
+        String returnDate =b1.getString("end");
         String adults = "1";
         String currency = "CAD";
         String children = "0";
@@ -93,7 +94,7 @@ public class ResultsPage extends AppCompatActivity {
                 originIATA + "&destination=" + destIATA + "&date=" + departDate + "&returnDate=" +
                 returnDate + "&adults=" + adults + "&currency=" + currency;
 
-        Toast.makeText(getApplicationContext(), "URL: " + tempUrl, Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(), "URL: " + tempUrl, Toast.LENGTH_LONG).show();
         Log.i("request url: ", tempUrl);
         String imgStr = dest.getImage();
         int imgId = getResources().getIdentifier(imgStr, "drawable", getApplication().getPackageName());
@@ -108,11 +109,11 @@ public class ResultsPage extends AppCompatActivity {
         countryNameTV.setText(Html.fromHtml(sourceString, 0));
 
         TextView departDateTV = findViewById(R.id.departDateResult);
-        sourceString = "<b>Departure Date:</b> ";// + departDate;
+        sourceString = "<b>Departure Date:</b> " + departDate;
         departDateTV.setText(Html.fromHtml(sourceString, 0));
 
         TextView returnDateTV = findViewById(R.id.returnDateResult);
-        sourceString = "<b>Return Date:</b> ";// + returnDate;
+        sourceString = "<b>Return Date:</b> " + returnDate;
         returnDateTV.setText(Html.fromHtml(sourceString, 0));
 
         TextView passengers = findViewById(R.id.passengerCountResult);

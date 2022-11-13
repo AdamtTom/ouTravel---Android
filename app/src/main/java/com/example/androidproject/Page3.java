@@ -28,7 +28,9 @@ public class Page3 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page3);
         Button button = findViewById(R.id.Page3_button1);
-        button.setOnClickListener(view -> next());
+        Intent intent = getIntent();
+        Bundle b = intent.getBundleExtra("bundle");
+        button.setOnClickListener(view -> next(b));
 
         //////////////////////////////////////////////////////
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -36,7 +38,7 @@ public class Page3 extends AppCompatActivity {
         //////////////////////////////////////////////////////
     }
 
-    public void next(){
+    public void next(Bundle b){
         /////////////////////////////////////////////////////////////
         ArrayList<City> cities = new ArrayList<>();
         Bundle bundle = new Bundle();
@@ -56,7 +58,8 @@ public class Page3 extends AppCompatActivity {
 //                    }
                 }
                 bundle.putParcelableArrayList("cities", cities);
-                intent.putExtras(bundle);
+                intent.putExtra("page2",bundle);
+                intent.putExtra("bundle", b);
                 startActivity(intent);
             }
 
