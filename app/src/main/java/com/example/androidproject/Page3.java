@@ -2,8 +2,12 @@ package com.example.androidproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Page3 extends AppCompatActivity {
     ///////////////////////////////////////////////////
@@ -58,6 +63,23 @@ public class Page3 extends AppCompatActivity {
         checkBoxArrayListWeather.add(check_box_cold);
         checkBoxArrayListWeather.add(check_box_average);
 
+        //Currency Spinner
+        Spinner spinner = findViewById(R.id.spinner);
+        String[] currencies = getResources().getStringArray(R.array.currencies);
+        Arrays.sort(currencies);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, currencies);
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                b.putString("currency", spinner.getSelectedItem().toString());
+            }
+            @Override
+            public void onNothingSelected(AdapterView <?> parent) {
+            }
+        });
+        spinner.setSelection(2);
 
         ArrayList<String> selectedCheckBoxesInterests = new ArrayList<>();
         for (CheckBox checkBox : checkBoxArrayListInterests) {
