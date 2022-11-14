@@ -2,6 +2,7 @@ package com.example.androidproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,6 +54,7 @@ public class ResultsPage extends AppCompatActivity {
 
     String originIATA;
     String destIATA;
+    String currency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,17 +86,28 @@ public class ResultsPage extends AppCompatActivity {
 
         originIATA = "YVR";
         destIATA = dest.getIataCode();
-        String departDate = b1.getString("start");
-        String returnDate =b1.getString("end");
+
+        String bundleDepartDate = b1.getString("start");
+        String bundleReturnDate =b1.getString("end");
+        //Rempve weekday from string because line was too long
+        String departDate = bundleDepartDate.substring(bundleDepartDate.indexOf(' ') + 1);
+        String returnDate = bundleReturnDate.substring(bundleReturnDate.indexOf(' ') + 1);
+
+        String pattern = "yyyy-MM-dd";
+        @SuppressLint("SimpleDateFormat")
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String departDateFormatted = simpleDateFormat.format(Date.parse(departDate));
+        String returnDateFormatted = simpleDateFormat.format(Date.parse(returnDate));
+
         String adults = b1.getString("passengers");
-        String currency = "CAD";
-        String children = "0";
-        String infants = "0";
-        String cabinClass = "economy";
-        String filter = "price"; // filter=price& before currency
+        currency = b1.getString("currency");
+//        String children = "0";
+//        String infants = "0";
+//        String cabinClass = "economy";
+//        String filter = "price"; // filter=price& before currency
         String tempUrl = "https://skyscanner50.p.rapidapi.com/api/v1/searchFlights?origin=" +
-                originIATA + "&destination=" + destIATA + "&date=" + departDate + "&returnDate=" +
-                returnDate + "&adults=" + adults + "&currency=" + currency;
+                originIATA + "&destination=" + destIATA + "&date=" + departDateFormatted + "&returnDate=" +
+                returnDateFormatted + "&adults=" + adults + "&currency=" + currency;
 
 //        Toast.makeText(getApplicationContext(), "URL: " + tempUrl, Toast.LENGTH_LONG).show();
         Log.i("request url: ", tempUrl);
@@ -117,11 +132,12 @@ public class ResultsPage extends AppCompatActivity {
         returnDateTV.setText(Html.fromHtml(sourceString, 0));
 
         TextView passengers = findViewById(R.id.passengerCountResult);
-        sourceString = "<b>Passengers:</b>" + adults;
+        sourceString = "<b>Passengers:</b> " + adults;
         passengers.setText(Html.fromHtml(sourceString, 0));
+        Log.i("url", tempUrl);
 
-//        ResultsPage.AsyncTaskRunner runner = new ResultsPage.AsyncTaskRunner();
-//        runner.execute(tempUrl);
+        ResultsPage.AsyncTaskRunner runner = new ResultsPage.AsyncTaskRunner();
+        runner.execute(tempUrl);
     }
 
     private class AsyncTaskRunner extends AsyncTask<String, Void, String> {
@@ -169,7 +185,7 @@ public class ResultsPage extends AppCompatActivity {
                     airplane2img.setAlpha((float)1);
                     dash1.setText("---------");
                     dash2.setText("---------");
-                    String sourceString = "<b>Total Trip Price:</b> " + price + " CAD";
+                    String sourceString = "<b>Total Trip Price:</b> " + price + " " + currency;
                     tripPrice.setText(Html.fromHtml(sourceString, 0));
 
                 } catch (JSONException e) {
