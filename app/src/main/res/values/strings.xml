@@ -42,9 +42,9 @@
     <string name="page2_helper2">To:</string>
     <string name="page2_btn1">Choose Date</string>
     <string name="page2_header2">Please enter your city airport\'s IATA code:</string>
-    <string name="page2_hint">IATA code</string>
+    <string name="page2_hint">Eg: YVR</string>
     <string name="page2_header3">Please enter total number of Passengers:</string>
-    <string name="page2_hint2">Number of Passengers</string>
+    <string name="page2_hint2">Eg: 5</string>
     <string name="next">Next</string>
     <string name="page4_title">Places You May Enjoy</string>
     <string name ="page4_location">Locations you may like to visit</string>
