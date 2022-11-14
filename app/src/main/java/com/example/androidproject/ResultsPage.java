@@ -85,7 +85,7 @@ public class ResultsPage extends AppCompatActivity {
 //        Toast.makeText(getApplicationContext(), "Iata: " + dest.getIataCode(), Toast.LENGTH_LONG).show();
 
         originIATA = "YVR";
-        destIATA = dest.getIataCode();
+        destIATA = dest.getIataCode().toUpperCase();
 
         String bundleDepartDate = b1.getString("start");
         String bundleReturnDate =b1.getString("end");
