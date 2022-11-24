@@ -136,8 +136,8 @@ public class ResultsPage extends AppCompatActivity {
         passengers.setText(Html.fromHtml(sourceString, 0));
         Log.i("url", tempUrl);
 
-        ResultsPage.AsyncTaskRunner runner = new ResultsPage.AsyncTaskRunner();
-        runner.execute(tempUrl);
+//        ResultsPage.AsyncTaskRunner runner = new ResultsPage.AsyncTaskRunner();
+//        runner.execute(tempUrl);
     }
 
     private class AsyncTaskRunner extends AsyncTask<String, Void, String> {

@@ -4,19 +4,28 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Page4 extends AppCompatActivity {
     ViewPager2 viewPager2;
     ArrayList<ViewPagerItem> viewPagerItems;
+    ArrayList<ViewPagerItem> viewPagerItems1;
     ArrayList<Integer> images = new ArrayList<>();
     ArrayList<String> cityNames = new ArrayList<>();
     ArrayList<String> countryNames = new ArrayList<>();
     ArrayList<String> descriptions = new ArrayList<>();
+    ArrayList<String> weathers = new ArrayList<>();
+    ArrayList<ArrayList<String>>tags = new ArrayList<>();
     ArrayList<City> cities;
 
     @Override
@@ -30,6 +39,9 @@ public class Page4 extends AppCompatActivity {
 
         Bundle bundle = getIntent().getBundleExtra("page2");
         Bundle b1 = getIntent().getBundleExtra("bundle");
+        ArrayList<String> interest = b1.getStringArrayList("interests");
+        String weather = b1.getString("weather");
+        Toast.makeText(this, interest.get(1), Toast.LENGTH_LONG).show();
         cities = bundle.getParcelableArrayList("cities");
 
 //        Toast.makeText(this, " " + cities.size(), Toast.LENGTH_SHORT).show();
@@ -42,15 +54,25 @@ public class Page4 extends AppCompatActivity {
             cityNames.add(cities.get(i).getName());
             countryNames.add(cities.get(i).getCountry());
             descriptions.add(cities.get(i).getDescription());
+            tags.add(cities.get(i).getTags());
+            weathers.add(cities.get(i).getWeather());
         }
         viewPagerItems = new ArrayList<>();
+        viewPagerItems1 = new ArrayList<>();
 
         for (int j = 0; j < cities.size(); j++) {
-            ViewPagerItem viewPagerItem = new ViewPagerItem(images.get(j), cityNames.get(j),
-                                                        countryNames.get(j), descriptions.get(j));
-            viewPagerItems.add(viewPagerItem);
-        }
+            if(!Collections.disjoint(tags.get(j), interest) && Objects.equals(weathers.get(j), weather.toLowerCase(Locale.ROOT))) {
+                   ViewPagerItem viewPagerItem = new ViewPagerItem(images.get(j), cityNames.get(j),
+                           countryNames.get(j), descriptions.get(j));
+                   viewPagerItems.add(viewPagerItem);
+            }else{
+                ViewPagerItem viewPagerItem = new ViewPagerItem(images.get(j), cityNames.get(j),
+                        countryNames.get(j), descriptions.get(j));
+                viewPagerItems1.add(viewPagerItem);
+            }
 
+        }
+        viewPagerItems.addAll(viewPagerItems1);
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(viewPagerItems);
         viewPager2.setAdapter(myPagerAdapter);
 
@@ -94,6 +116,10 @@ public class Page4 extends AppCompatActivity {
 
 //        Button button = findViewById(R.id.Page4_button);
 //        button.setOnClickListener(view -> next());
+    }
+    public static List<String> intersection(List<String> s1, List<String>s2){
+       return  s1.stream().distinct().filter(s2::contains).collect(Collectors.toList());
+
     }
 
     public void next(int cityIndex, Bundle c){
