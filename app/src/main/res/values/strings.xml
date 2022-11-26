@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidProject</string>
+    <string name="app_name">YouTravel</string>
     <string name="main_page_welcome">Welcome to YouTravel!</string>
     <string name="main_page_content">Want to travel, but don\'t know where to go?<br /> Let us help you make that decision!</string>
     <string name="page6_statistics">STATISTICS</string>
@@ -42,9 +42,9 @@
     <string name="page2_helper2">To:</string>
     <string name="page2_btn1">Choose Date</string>
     <string name="page2_header2">Please enter your city airport\'s IATA code:</string>
-    <string name="page2_hint">IATA code</string>
+    <string name="page2_hint">Eg: YVR</string>
     <string name="page2_header3">Please enter total number of Passengers:</string>
-    <string name="page2_hint2">Number of Passengers</string>
+    <string name="page2_hint2">Eg: 5</string>
     <string name="next">Next</string>
     <string name="page4_title">Places You May Enjoy</string>
     <string name ="page4_location">Locations you may like to visit</string>
@@ -56,4 +56,5 @@
     <string name="page4_select">Select</string>
     <string name="page7_thankYou">Thank you for using YouTravel!</string>
     <string name="page7_byeMessage">We wish you a great trip!</string>
+    <string name="page7_btn">Finish</string>
 </resources>

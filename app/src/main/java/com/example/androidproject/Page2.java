@@ -1,5 +1,6 @@
 package com.example.androidproject;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +9,14 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import java.text.*;
+import java.util.Date;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 public class Page2 extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -38,7 +42,9 @@ public class Page2 extends AppCompatActivity implements DatePickerDialog.OnDateS
         });
 
         Button nextBtn = findViewById(R.id.page2_nextBtn);
-        nextBtn.setOnClickListener(v -> next());
+        nextBtn.setOnClickListener(v -> {
+                next();
+        });
     }
 
     @Override
@@ -52,7 +58,7 @@ public class Page2 extends AppCompatActivity implements DatePickerDialog.OnDateS
         current.setText(currentDateString);
     }
 
-    public void next(){
+    public void next() {
         Intent intent = new Intent(this, Page3.class);
         Bundle bundle = new Bundle();
         TextView departure = findViewById(R.id.emptyTextView1);
@@ -63,26 +69,44 @@ public class Page2 extends AppCompatActivity implements DatePickerDialog.OnDateS
         String number = passenger.getText().toString();
         EditText add = findViewById(R.id.page2_textInput);
         String address = add.getText().toString();
+
         if(departure.length() == 0 || departureDate.matches(" ")||departureDate.trim().matches("")){
             Toast.makeText(getApplicationContext(),"Please select departure Date", Toast.LENGTH_LONG).show();
         }
         else if(Return.length() == 0 || returnDate.matches(" ")||returnDate.trim().matches("")){
             Toast.makeText(getApplicationContext(),"Please select return Date", Toast.LENGTH_LONG).show();
+        }else if (departure.length() != 0 && Return.length()!=0){
+             String pattern = "yyyy-MM-dd";
+             @SuppressLint("SimpleDateFormat")
+             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+             String departDate= simpleDateFormat.format(Date.parse(departureDate));
+             String returnDate1 = simpleDateFormat.format(Date.parse(returnDate));
+             String currentDate = simpleDateFormat.format(new Date());
+             if(currentDate.compareTo(departDate)> 0){
+                 Toast.makeText(getApplicationContext(), "depart  date cannot occur before today's date", Toast.LENGTH_LONG).show();
+             }
+             else if(departDate.compareTo(returnDate1)>0) {
+                 Toast.makeText(getApplicationContext(), "return date cannot occur before departure date", Toast.LENGTH_LONG).show();
+             }else{
+                 if(add.length() == 0 || address.matches(" ")||address.trim().matches("")){
+                     Toast.makeText(getApplicationContext(),"Please enter valid IATA code", Toast.LENGTH_LONG).show();
+                 }
+                 else if(passenger.length() == 0 || number.matches(" ")||number.trim().matches("") ){
+                     Toast.makeText(getApplicationContext(),"Please enter valid number of passengers", Toast.LENGTH_LONG).show();
+                 }
+                 else if(Integer.parseInt(number) > 10){
+                     Toast.makeText(getApplicationContext(),"Please limit the number of passengers to 10", Toast.LENGTH_LONG).show();
+                 }
+                 else {
+                     bundle.putString("start", departureDate);
+                     bundle.putString("end", returnDate);
+                     bundle.putString("originIATA", address);
+                     bundle.putString("passengers", number);
+                     intent.putExtra("bundle", bundle);
+                     startActivity(intent);
+                 }
+             }
         }
 
-        else if(add.length() == 0 || address.matches(" ")||address.trim().matches("")){
-            Toast.makeText(getApplicationContext(),"Please enter valid IATA code", Toast.LENGTH_LONG).show();
-        }
-        else if(passenger.length() == 0 || number.matches(" ")||number.trim().matches("") ){
-            Toast.makeText(getApplicationContext(),"Please enter valid number of passengers", Toast.LENGTH_LONG).show();
-        }
-        else {
-            bundle.putString("start", departureDate);
-            bundle.putString("end", returnDate);
-            bundle.putString("originIATA", address);
-            bundle.putString("passengers", number);
-            intent.putExtra("bundle", bundle);
-            startActivity(intent);
-        }
     }
 }

@@ -7,6 +7,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -21,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 public class Page3 extends AppCompatActivity {
     ///////////////////////////////////////////////////
@@ -53,15 +56,6 @@ public class Page3 extends AppCompatActivity {
         checkBoxArrayListInterests.add(check_box_partying);
         checkBoxArrayListInterests.add(check_box_relaxation);
 
-        CheckBox check_box_hot = findViewById(R.id.Page3_checkBox4);
-        CheckBox check_box_cold = findViewById(R.id.Page3_checkBox5);
-        CheckBox check_box_average = findViewById(R.id.Page3_checkBox6);
-
-
-        ArrayList<CheckBox> checkBoxArrayListWeather = new ArrayList<>();
-        checkBoxArrayListWeather.add(check_box_hot);
-        checkBoxArrayListWeather.add(check_box_cold);
-        checkBoxArrayListWeather.add(check_box_average);
 
         //Currency Spinner
         Spinner spinner = findViewById(R.id.spinner);
@@ -88,7 +82,7 @@ public class Page3 extends AppCompatActivity {
                 if (bool){
                     System.out.println(checkBox.getId() + " Checked");
                     String selectedCheckBox = checkBox.getText().toString();
-                    selectedCheckBoxesInterests.add(selectedCheckBox);
+                    selectedCheckBoxesInterests.add(selectedCheckBox.toLowerCase(Locale.ROOT));
                 } else {
                     String unselectedCheckBox = checkBox.getText().toString();
                     System.out.println(checkBox.getId() + " Unhecked");
@@ -97,39 +91,25 @@ public class Page3 extends AppCompatActivity {
             });
         }
 
-        ArrayList<String> selectedCheckBoxesWeather = new ArrayList<>();
-        for (CheckBox checkBox : checkBoxArrayListWeather) {
-            // Override the onCheckedChanged method defined in CompoundButton.OnCheckedChangeListener
-            checkBox.setOnCheckedChangeListener((compoundButton, bool) -> {
-                if (bool){
-                    System.out.println(checkBox.getId() + " Checked");
-                    String selectedCheckBox = checkBox.getText().toString();
-                    selectedCheckBoxesWeather.add(selectedCheckBox);
-                } else {
-                    String unselectedCheckBox = checkBox.getText().toString();
-                    System.out.println(checkBox.getId() + " Unhecked");
-                    selectedCheckBoxesWeather.remove(unselectedCheckBox);
-                }
-            });
-        }
 
         Button nextButton = findViewById(R.id.Page3_button1);
         nextButton.setOnClickListener(view -> {
-            if (selectedCheckBoxesInterests.size() == 0 || selectedCheckBoxesWeather.size() == 0) {
-                Toast.makeText(getApplicationContext(),  "Must select at least 1 option for interest and weather.", Toast.LENGTH_SHORT).show();
-            } else {
-                for (int i = 0; i <  selectedCheckBoxesInterests.size(); i++){
-                    System.out.println(selectedCheckBoxesInterests.get(i));
-                    b.putString("checkboxBundleInterests" + i, selectedCheckBoxesInterests.get(i));
-                }
-                for (int i = 0; i <  selectedCheckBoxesWeather.size(); i++){
-                    System.out.println(selectedCheckBoxesWeather.get(i));
-                    b.putString("checkboxBundleWeather" + i, selectedCheckBoxesWeather.get(i));
-                }
 
-                b.putInt("checkboxInterestBundleSize", selectedCheckBoxesInterests.size());
-                b.putInt("checkboxWeatherBundleSize", selectedCheckBoxesWeather.size());
-                next(b);
+            if (selectedCheckBoxesInterests.size() == 0) {
+                Toast.makeText(getApplicationContext(),  "Must select at least 1 option for interest.", Toast.LENGTH_SHORT).show();
+            } else {
+                b.putStringArrayList("interests", selectedCheckBoxesInterests);
+                RadioGroup r = findViewById(R.id.radio_group);
+                int  selected_id = r.getCheckedRadioButtonId();
+                RadioButton button = findViewById(selected_id);
+                if (selected_id != -1) {
+                    String weather = button.getText().toString();
+                    b.putString("weather", weather);
+                    b.putInt("checkboxInterestBundleSize", selectedCheckBoxesInterests.size());
+                    next(b);
+                }else{
+                    Toast.makeText(getApplicationContext(),  "Must select 1 option for weather.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
