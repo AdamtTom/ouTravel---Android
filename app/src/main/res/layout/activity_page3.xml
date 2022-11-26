@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/Page3_textView2"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="29dp">
+        android:layout_marginTop="5dp">
 
         <RadioButton
             android:id="@+id/radioButton"
@@ -91,13 +91,25 @@
             android:text="@string/Page3_average" />
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/Page3_textView3"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/Page3_chooseCurrency"
+        android:textSize="20sp"
+        android:layout_below="@id/radio_group"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="15dp"/>
+
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/radio_group"
+        android:layout_below="@id/Page3_textView3"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="52dp" />
+        android:layout_marginTop="2dp" />
 
     <Button
         android:id="@+id/Page3_button1"
@@ -106,7 +118,6 @@
         android:layout_below="@id/spinner"
         android:layout_marginStart="260dp"
         android:layout_marginTop="34dp"
-        android:backgroundTint="@color/green"
         android:text="@string/nextButtonStr"
         android:textSize="20sp" />
 

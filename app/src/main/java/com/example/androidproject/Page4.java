@@ -41,7 +41,6 @@ public class Page4 extends AppCompatActivity {
         Bundle b1 = getIntent().getBundleExtra("bundle");
         ArrayList<String> interest = b1.getStringArrayList("interests");
         String weather = b1.getString("weather");
-        Toast.makeText(this, interest.get(1), Toast.LENGTH_LONG).show();
         cities = bundle.getParcelableArrayList("cities");
 
 //        Toast.makeText(this, " " + cities.size(), Toast.LENGTH_SHORT).show();
