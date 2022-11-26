@@ -56,4 +56,5 @@
     <string name="page4_select">Select</string>
     <string name="page7_thankYou">Thank you for using YouTravel!</string>
     <string name="page7_byeMessage">We wish you a great trip!</string>
+    <string name="page7_btn">Finish</string>
 </resources>
