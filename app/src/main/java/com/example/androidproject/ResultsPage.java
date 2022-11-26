@@ -3,11 +3,13 @@ package com.example.androidproject;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -136,8 +138,15 @@ public class ResultsPage extends AppCompatActivity {
         passengers.setText(Html.fromHtml(sourceString, 0));
         Log.i("url", tempUrl);
 
-//        ResultsPage.AsyncTaskRunner runner = new ResultsPage.AsyncTaskRunner();
-//        runner.execute(tempUrl);
+        ResultsPage.AsyncTaskRunner runner = new ResultsPage.AsyncTaskRunner();
+        runner.execute(tempUrl);
+
+        Button nextBtn = findViewById(R.id.page6_button2);
+        nextBtn.setOnClickListener(view -> {
+            Intent intent = new Intent(this, Page7.class);
+            startActivity(intent);
+        });
+
     }
 
     private class AsyncTaskRunner extends AsyncTask<String, Void, String> {
