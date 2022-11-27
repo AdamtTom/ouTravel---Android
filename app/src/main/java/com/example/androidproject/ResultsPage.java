@@ -31,6 +31,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -57,6 +58,8 @@ public class ResultsPage extends AppCompatActivity {
     String originIATA;
     String destIATA;
     String currency;
+    String tempUrl;
+    int fail_count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +94,7 @@ public class ResultsPage extends AppCompatActivity {
 
         String bundleDepartDate = b1.getString("start");
         String bundleReturnDate =b1.getString("end");
-        //Rempve weekday from string because line was too long
+        //Remove weekday from string because line was too long
         String departDate = bundleDepartDate.substring(bundleDepartDate.indexOf(' ') + 1);
         String returnDate = bundleReturnDate.substring(bundleReturnDate.indexOf(' ') + 1);
 
@@ -107,11 +110,10 @@ public class ResultsPage extends AppCompatActivity {
 //        String infants = "0";
 //        String cabinClass = "economy";
 //        String filter = "price"; // filter=price& before currency
-        String tempUrl = "https://skyscanner50.p.rapidapi.com/api/v1/searchFlights?origin=" +
+        tempUrl = "https://skyscanner50.p.rapidapi.com/api/v1/searchFlights?origin=" +
                 originIATA + "&destination=" + destIATA + "&date=" + departDateFormatted + "&returnDate=" +
                 returnDateFormatted + "&adults=" + adults + "&currency=" + currency;
 
-//        Toast.makeText(getApplicationContext(), "URL: " + tempUrl, Toast.LENGTH_LONG).show();
         Log.i("request url: ", tempUrl);
         String imgStr = dest.getImage();
         int imgId = getResources().getIdentifier(imgStr, "drawable", getApplication().getPackageName());
@@ -138,14 +140,16 @@ public class ResultsPage extends AppCompatActivity {
         passengers.setText(Html.fromHtml(sourceString, 0));
         Log.i("url", tempUrl);
 
-        ResultsPage.AsyncTaskRunner runner = new ResultsPage.AsyncTaskRunner();
-        runner.execute(tempUrl);
-
         Button nextBtn = findViewById(R.id.page6_button2);
         nextBtn.setOnClickListener(view -> {
             Intent intent = new Intent(this, Page7.class);
             startActivity(intent);
         });
+
+        ResultsPage.AsyncTaskRunner runner = new ResultsPage.AsyncTaskRunner();
+        runner.execute(tempUrl);
+
+
 
     }
 
@@ -157,7 +161,7 @@ public class ResultsPage extends AppCompatActivity {
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, strings[0], null, response -> {
                 try {
                     JSONArray data = response.getJSONArray("data");
-                    Toast.makeText(getApplicationContext(), "data: " + data.toString(5), Toast.LENGTH_LONG).show();
+//                    Toast.makeText(getApplicationContext(), "data: " + data.toString(5), Toast.LENGTH_LONG).show();
                     JSONObject option1 = data.getJSONObject(0);
                     JSONObject priceObj = option1.getJSONObject("price");
                     double price = priceObj.getDouble("amount");
@@ -196,12 +200,22 @@ public class ResultsPage extends AppCompatActivity {
                     dash2.setText("---------");
                     String sourceString = "<b>Total Trip Price:</b> " + price + " " + currency;
                     tripPrice.setText(Html.fromHtml(sourceString, 0));
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Log.i("tag", "JSON Error while handling request: " + e);
-                    tripPrice.setText("No flights were found. Try again Later.");
-                    tripPrice.setTextColor(Color.RED);
+                    fail_count++;
+                    if (fail_count < 2){
+                        try {
+                            TimeUnit.SECONDS.sleep(1);
+                        } catch (InterruptedException ex) {
+                            ex.printStackTrace();
+                        }
+                        ResultsPage.AsyncTaskRunner runner = new ResultsPage.AsyncTaskRunner();
+                        runner.execute(tempUrl);
+                    } else {
+                        tripPrice.setText("No flights were found. Try again Later.");
+                        tripPrice.setTextColor(Color.RED);
+                    }
                 }
             }, error -> Toast.makeText(ResultsPage.this, error.toString(), Toast.LENGTH_SHORT).show()) {
                 @Override
