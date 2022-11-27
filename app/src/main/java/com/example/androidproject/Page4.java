@@ -59,18 +59,40 @@ public class Page4 extends AppCompatActivity {
         viewPagerItems = new ArrayList<>();
         viewPagerItems1 = new ArrayList<>();
 
+        //////////////////////////////////////////////////
+        /////////////////////////////////////////////////
+        ArrayList<City> sorted_cities1 = new ArrayList<>();
+        ArrayList<City> sorted_cities2 = new ArrayList<>();
+        /////////////////////////////////////////////////
+        /////////////////////////////////////////////////
         for (int j = 0; j < cities.size(); j++) {
             if(!Collections.disjoint(tags.get(j), interest) && Objects.equals(weathers.get(j), weather.toLowerCase(Locale.ROOT))) {
                    ViewPagerItem viewPagerItem = new ViewPagerItem(images.get(j), cityNames.get(j),
                            countryNames.get(j), descriptions.get(j));
                    viewPagerItems.add(viewPagerItem);
+                   //////////////////////////////////
+                   ///////////////////////////////////
+                   sorted_cities1.add(cities.get(j));
+                   ///////////////////////////////////
+                   /////////////////////////////////////
             }else{
                 ViewPagerItem viewPagerItem = new ViewPagerItem(images.get(j), cityNames.get(j),
                         countryNames.get(j), descriptions.get(j));
                 viewPagerItems1.add(viewPagerItem);
+                ///////////////////////////////////////
+                /////////////////////////////////////
+                sorted_cities2.add(cities.get(j));
+                /////////////////////////////////////
+                //////////////////////////////////////
             }
 
         }
+        //////////////////////////////////////////////
+        /////////////////////////////////////////////
+        sorted_cities1.addAll(sorted_cities2);
+        cities = sorted_cities1;
+        ////////////////////////////////////////////
+        ///////////////////////////////////////////
         viewPagerItems.addAll(viewPagerItems1);
         MyPagerAdapter myPagerAdapter = new MyPagerAdapter(viewPagerItems);
         viewPager2.setAdapter(myPagerAdapter);
