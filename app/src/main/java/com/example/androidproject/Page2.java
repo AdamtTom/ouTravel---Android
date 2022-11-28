@@ -68,7 +68,7 @@ public class Page2 extends AppCompatActivity implements DatePickerDialog.OnDateS
         EditText passenger = findViewById(R.id.page2_textInput2);
         String number = passenger.getText().toString();
         EditText add = findViewById(R.id.page2_textInput);
-        String address = add.getText().toString();
+        String address = add.getText().toString().toUpperCase();
 
         if(departure.length() == 0 || departureDate.matches(" ")||departureDate.trim().matches("")){
             Toast.makeText(getApplicationContext(),"Please select departure Date", Toast.LENGTH_LONG).show();
@@ -88,7 +88,7 @@ public class Page2 extends AppCompatActivity implements DatePickerDialog.OnDateS
              else if(departDate.compareTo(returnDate1)>0) {
                  Toast.makeText(getApplicationContext(), "return date cannot occur before departure date", Toast.LENGTH_LONG).show();
              }else{
-                 if(add.length() == 0 || address.matches(" ")||address.trim().matches("")){
+                 if(add.length() != 3){
                      Toast.makeText(getApplicationContext(),"Please enter valid IATA code", Toast.LENGTH_LONG).show();
                  }
                  else if(passenger.length() == 0 || number.matches(" ")||number.trim().matches("") ){

@@ -204,7 +204,7 @@ public class ResultsPage extends AppCompatActivity {
                     e.printStackTrace();
                     Log.i("tag", "JSON Error while handling request: " + e);
                     fail_count++;
-                    if (fail_count < 2){
+                    if (fail_count < 3){
                         try {
                             TimeUnit.SECONDS.sleep(1);
                         } catch (InterruptedException ex) {
